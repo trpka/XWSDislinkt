@@ -1,0 +1,16 @@
+.comment {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+
+#userId{
+    margin: auto;
+    display: block;
+}
+
+#content{
+    margin: auto;
+    display: block;
+}

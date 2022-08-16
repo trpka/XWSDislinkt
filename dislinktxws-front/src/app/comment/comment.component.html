@@ -1,0 +1,13 @@
+<div class = "comment">
+    <form >
+        <label for="userId">User ID :</label><br/>
+        <input name="userId" id="userId" type="text" [(ngModel)]="commentToAdd.userId"><br/>
+        <label for="content">Content:</label><br/>
+        <input id="content" name="content" [(ngModel)]="commentToAdd.content"><br/>
+  
+        
+        <button class="btn btn-success" (click)="saveComment()">save</button>
+    </form>
+</div>
+
+     
