@@ -13,6 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { CommentComponent } from './comment/comment.component';
 import { PostComponent } from './post/post.component';
 import { OnePostComponent } from './one-post/one-post.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { OnePostComponent } from './one-post/one-post.component';
     CommentComponent,
     PostComponent,
     OnePostComponent,
+    ProfileComponent,
 
   ],
   imports: [

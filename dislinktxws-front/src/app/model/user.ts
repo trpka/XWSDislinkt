@@ -8,7 +8,7 @@ interface UserInterface{
     email: string;
     username: string ;
     passworde: string ;
-    dateOfBirth: Date ;
+    dateOfBirth: string ;
     
 }
 export class User implements UserInterface{
@@ -18,7 +18,7 @@ export class User implements UserInterface{
     email: string;
     username: string ;
     passworde: string ;
-    dateOfBirth: Date ;
+    dateOfBirth: string ;
     constructor(obj:UserInterface){
         this.id=obj.id;
         this.firstName=obj.firstName;

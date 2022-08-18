@@ -13,7 +13,7 @@ export class PostService {
 
   getPosts():Observable<Post[]>{
     return this.http.get<Post[]>(this.url);
-}
+  }
   
   save(newPost:Post):Observable<Post>{
     return this.http.post<Post>(this.url,newPost);

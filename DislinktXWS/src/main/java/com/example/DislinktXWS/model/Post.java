@@ -17,7 +17,7 @@ public class Post {
     private Long id;
     private String ownerId;
     private String text;
-    private List<Long> userIdWholikes;
+    private List<Long> userIdWhoLikes;
     private List<Long> userIdWhoDislikes;
     private List<Comment> comments;
 
@@ -45,12 +45,12 @@ public class Post {
         this.text = text;
     }
 
-    public List<Long> getUserIdWholikes() {
-        return userIdWholikes;
+    public List<Long> userIdWhoLikes() {
+        return userIdWhoLikes;
     }
 
-    public void setUserIdWholikes(List<Long> userIdWholikes) {
-        this.userIdWholikes = userIdWholikes;
+    public void userIdWhoLikes(List<Long> userIdWhoLikes) {
+        this.userIdWhoLikes = userIdWhoLikes;
     }
 
     public List<Long> getUserIdWhoDislikes() {
@@ -69,22 +69,22 @@ public class Post {
         this.comments = comments;
     }
 
-    public Post(Long id, String ownerId, String text, List<Long> userIdWholikes, List<Long> userIdWhoDislikes, List<Comment> comments) {
+    public Post(Long id, String ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments) {
         this.id = id;
         this.ownerId = ownerId;
         this.text = text;
-        this.userIdWholikes = userIdWholikes;
+        this.userIdWhoLikes = userIdWhoLikes;
         this.userIdWhoDislikes = userIdWhoDislikes;
         this.comments = comments;
     }
+
     public Post(String ownerId, String text) {
         this.ownerId = ownerId;
         this.text = text;
-        this.userIdWholikes = new ArrayList<>();
+        this.userIdWhoLikes = new ArrayList<>();
         this.userIdWhoDislikes = new ArrayList<>();
         this.comments =new ArrayList<>();
     }
-
 
     public Post() {
     }

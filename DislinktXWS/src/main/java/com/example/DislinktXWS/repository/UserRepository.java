@@ -1,6 +1,5 @@
 package com.example.DislinktXWS.repository;
-
-import com.example.DislinktXWS.model.Post;
+import com.example.DislinktXWS.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import  com.example.DislinktXWS.model.User;
