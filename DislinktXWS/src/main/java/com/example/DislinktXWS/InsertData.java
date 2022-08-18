@@ -17,11 +17,7 @@ public class InsertData {
     @PostConstruct
     public void init() {
         Comment com1=new Comment((long)2,"shdasjkd","sdsa");
-        //Comment comment = new Comment("stanojko", "kum");
-
-
         repository.save(com1);
-        //repository.save(comment);
 
     }
 }
