@@ -18,8 +18,8 @@ export class PostComponent implements OnInit {
         id: 0,
         ownerId:"",
         text:"",
-        likes:[],
-        dislikes:[],
+        userIdWhoLikes:[],
+        userIdWhoDislikes:[],
         comments:[]
       });
       this.posts = [];

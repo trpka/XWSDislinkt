@@ -3,12 +3,14 @@ package com.example.DislinktXWS.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Getter
 @Setter
 
+@Document(collection = "users")
 public class User {
 
     @Id
@@ -18,7 +20,7 @@ public class User {
     private String email;
     private String username;
     private String password;
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     public Long getId() {
         return id;
@@ -68,15 +70,15 @@ public class User {
         this.password = password;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public User(Long id, String firstName, String lastName, String email, String username, String password, Date dateOfBirth) {
+    public User(Long id, String firstName, String lastName, String email, String username, String password, String dateOfBirth) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

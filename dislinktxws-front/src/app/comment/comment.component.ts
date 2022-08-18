@@ -37,8 +37,8 @@ export class CommentComponent implements OnInit {
           id: 0,
           ownerId:"",
           text:"",
-          likes:[],
-          dislikes:[],
+          userIdWhoLikes:[],
+          userIdWhoDislikes:[],
           comments:[]
         }),
       comment:new Comment(
@@ -53,8 +53,7 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.reloadData();
-    this.loadPost()
-
+    this.loadPost();
   }
 
   loadPost() {
@@ -62,11 +61,13 @@ export class CommentComponent implements OnInit {
     this.postService.findPostById(this.idPost)
     .subscribe(res=>this.post=res)
   }
+  
 
   reloadData() {
     this.commentService.getComments()
-    .subscribe(res=>this.comments=res);
+    .subscribe(res=>this.comments=res)
   }
+
   saveComment(){
     this.newCommentForPost.post=this.post;
     this.commentService.save(this.newCommentForPost)
