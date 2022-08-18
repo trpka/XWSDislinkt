@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { CommentComponent } from './comment/comment.component';
+import { PostComponent } from './post/post.component';
+import { OnePostComponent } from './one-post/one-post.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { CommentComponent } from './comment/comment.component';
     AppComponent,
     NavbarComponent,
     CommentComponent,
+    PostComponent,
+    OnePostComponent,
 
   ],
   imports: [

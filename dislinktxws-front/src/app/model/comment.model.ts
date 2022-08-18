@@ -1,10 +1,10 @@
 interface CommentInterface{
-    id?:string;
+    id?:number;
     userId:string;
     content:string;
 }
 export class Comment implements CommentInterface{
-    id?: string | undefined;
+    id?: number | undefined;
     userId:string;
     content:string;
     constructor(obj:CommentInterface){

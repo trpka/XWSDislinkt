@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -13,18 +14,18 @@ import java.util.List;
 @Document(collection = "posts")
 public class Post {
     @Id
-    private String id;
+    private Long id;
     private String ownerId;
     private String text;
-    private List<String> likes;
-    private List<String> dislikes;
+    private List<Long> userIdWholikes;
+    private List<Long> userIdWhoDislikes;
     private List<Comment> comments;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,20 +45,20 @@ public class Post {
         this.text = text;
     }
 
-    public List<String> getLikes() {
-        return likes;
+    public List<Long> getUserIdWholikes() {
+        return userIdWholikes;
     }
 
-    public void setLikes(List<String> likes) {
-        this.likes = likes;
+    public void setUserIdWholikes(List<Long> userIdWholikes) {
+        this.userIdWholikes = userIdWholikes;
     }
 
-    public List<String> getDislikes() {
-        return dislikes;
+    public List<Long> getUserIdWhoDislikes() {
+        return userIdWhoDislikes;
     }
 
-    public void setDislikes(List<String> dislikes) {
-        this.dislikes = dislikes;
+    public void setUserIdWhoDislikes(List<Long> userIdWhoDislikes) {
+        this.userIdWhoDislikes = userIdWhoDislikes;
     }
 
     public List<Comment> getComments() {
@@ -68,14 +69,22 @@ public class Post {
         this.comments = comments;
     }
 
-    public Post(String id, String ownerId, String text, List<String> likes, List<String> dislikes, List<Comment> comments) {
+    public Post(Long id, String ownerId, String text, List<Long> userIdWholikes, List<Long> userIdWhoDislikes, List<Comment> comments) {
         this.id = id;
         this.ownerId = ownerId;
         this.text = text;
-        this.likes = likes;
-        this.dislikes = dislikes;
+        this.userIdWholikes = userIdWholikes;
+        this.userIdWhoDislikes = userIdWhoDislikes;
         this.comments = comments;
     }
+    public Post(String ownerId, String text) {
+        this.ownerId = ownerId;
+        this.text = text;
+        this.userIdWholikes = new ArrayList<>();
+        this.userIdWhoDislikes = new ArrayList<>();
+        this.comments =new ArrayList<>();
+    }
+
 
     public Post() {
     }
