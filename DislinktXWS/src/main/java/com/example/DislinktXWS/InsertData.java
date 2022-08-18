@@ -28,10 +28,12 @@ public class InsertData {
     @PostConstruct
     public void init() {
 
+
         Comment com1=new Comment((long)1,"Dalibor","blablablabla");
         repository.save(com1);
         User user = new User((long)1, "Jovan", "Jovic", "jova@gmail.com", "jovajovic", "sifra123","29.08.1999.");
         userRepository.save(user);
+
 
     }
 }
