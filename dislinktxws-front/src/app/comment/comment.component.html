@@ -1,13 +1,27 @@
-<div class = "comment">
+<div class = "comment-input">
     <form >
         <label for="userId">User ID :</label><br/>
-        <input name="userId" id="userId" type="text" [(ngModel)]="commentToAdd.userId"><br/>
+        <input name="userId" id="userId" type="text" [(ngModel)]="newCommentForPost.comment.userId"><br/>
         <label for="content">Content:</label><br/>
-        <input id="content" name="content" [(ngModel)]="commentToAdd.content"><br/>
+        <input id="content" name="content" [(ngModel)]="newCommentForPost.comment.content"><br/>
   
         
         <button class="btn btn-success" (click)="saveComment()">save</button>
     </form>
 </div>
 
+<div>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>UserId</th><th>Content</th>
+            </tr>
+        </thead>
+        <tbody >
+			<tr  *ngFor="let comment of comments"  >  
+                <td>{{comment.userId}}</td><td>{{comment.content}}</td>  
+            </tr>
+		</tbody>
+    </table>
+</div>
      

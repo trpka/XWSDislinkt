@@ -1,16 +1,21 @@
-.comment-input {
+button {
+    font-size: 1.5em;
+    margin: 5px;
+  }
+
+.post-input {
     margin: auto;
     width: 50%;
     border: 3px solid green;
     padding: 10px;
   }
 
-#userId{
+#ownerId{
     margin: auto;
     display: block;
 }
 
-#content{
+#text{
     margin: auto;
     display: block;
 }

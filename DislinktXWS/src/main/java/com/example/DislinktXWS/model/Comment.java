@@ -11,15 +11,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "comments")
 public class Comment {
     @Id
-    private String id;
+    private Long id;
     private String userId;
     private String content;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,8 +39,13 @@ public class Comment {
         this.content = content;
     }
 
-    public Comment(String id, String userId, String content) {
+    public Comment(Long id, String userId, String content) {
         this.id = id;
+        this.userId = userId;
+        this.content = content;
+    }
+    public Comment(String userId, String content) {
+
         this.userId = userId;
         this.content = content;
     }

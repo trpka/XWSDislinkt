@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<div class = "onePost">
+    <form >
+        <label for="ownerId">Owner ID :</label><br/>
+        <p>{{post.ownerId}}</p>
+        <label for="text">Text:</label><br/>
+        <p>{{post.text}}</p>
+        <label for="like">Likes: </label><br/>
+        <label for="dislike">Disikes:</label><br/>
+        <label for="coments">Comments:</label><br/>
+
+        <button class="btn btn-success" [routerLink]="['/newComment',post.id]">Add comment</button>
+    </form>
+</div>
