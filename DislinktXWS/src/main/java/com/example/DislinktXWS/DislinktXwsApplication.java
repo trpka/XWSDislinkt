@@ -7,7 +7,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @EnableMongoRepositories
-public class DislinktXwsApplication {
+public class DislinktXwsApplication
+{
 
 	@Autowired
 	InsertData data;
