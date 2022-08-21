@@ -31,6 +31,12 @@ public class RegistrationService
             System.out.println("Username Already exists! ");
             return null;
         }
+        else if (user.getUsername().isEmpty() || user.getFirstName().isEmpty() || user.getLastName().isEmpty() ||
+                user.getFirstName().isEmpty())
+        {
+            System.out.println("There is not enough data! ");
+            return null;
+        }
 
         //Automatsko prosledjivanje novog ID-ja
         Long id = (long)0;

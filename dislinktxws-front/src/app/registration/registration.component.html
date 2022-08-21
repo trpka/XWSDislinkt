@@ -6,6 +6,8 @@
     <meta charset="utf-8"/>
 </head>
 
+
+
 <div class = "new-user">
     <form >
         
@@ -23,12 +25,12 @@
         <input id="username" name="username" type="text" [(ngModel)]="newUser.username"><br/>
 
         <label for="password">Password:</label><br/>
-        <input id="passworde" name="passworde" type="text" [(ngModel)]="newUser.passworde"><br/>
+        <input id="passworde" name="passworde" type="password" [(ngModel)]="newUser.passworde"><br/>
 
         <label for="dateOfBirth">Date Of Birth:</label><br/>
         <input id="dateOfBirth" name="dateOfBirth" type="text" [(ngModel)]="newUser.dateOfBirth"><br/>
         
-        <button class="btn btn-success" (click)="registration()">registration1</button>
+        <button class="registerbtn" (click)="registration()">Registration</button>
     </form>
 </div>
 
