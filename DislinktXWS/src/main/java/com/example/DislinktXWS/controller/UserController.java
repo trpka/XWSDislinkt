@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -29,6 +30,19 @@ public class UserController {
         User savedUser=this.userService.save(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
+
+    //Pronalazenje Usera Po Delu Korisnickog imena
+
+    @RequestMapping(value="api/search/{username}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<?> searchByPartUsername(@PathVariable String username)
+    {
+        List<User> users = userService.searchByPartUsername(username);
+        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }
+
+
+
 
 
 }
