@@ -5,12 +5,14 @@ import { OnePostComponent } from './one-post/one-post.component';
 import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {path:'post/:id',component:OnePostComponent},
   {path: 'newComment/:idPost', component:CommentComponent},
   {path: 'post', component: PostComponent},
   {path: 'user/:id', component:ProfileComponent},
+  {path: 'search/:username',component:SearchComponent},
   {path: 'registration',component: RegistrationComponent}
 ];
 

@@ -33,12 +33,21 @@ public class UserController {
 
     //Pronalazenje Usera Po Delu Korisnickog imena
 
-    @RequestMapping(value="api/search/{username}",method = RequestMethod.GET,produces= {
+    /*@RequestMapping(value="api/search/{username}",method = RequestMethod.GET,produces= {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<?> searchByPartUsername(@PathVariable String username)
     {
         List<User> users = userService.searchByPartUsername(username);
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }*/
+
+    //Pronalazenje Korisnika po korisnickom imenu
+    @RequestMapping(value="api/search/{username}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<User> getByUsername(@PathVariable String username)
+    {
+        User user=this.userService.getByUsername(username);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 

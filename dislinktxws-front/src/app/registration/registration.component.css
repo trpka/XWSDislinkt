@@ -28,7 +28,7 @@
     .sidenav {
       height: auto;
       padding: 15px;
-    }
+    }z
     .row.content {height:auto;} 
   }
 
@@ -40,7 +40,7 @@ box-sizing: border-box;
 /* Add padding to containers */
 .container {
 padding: 16px;
-background-color: #211f1e;
+background-color: blueviolet;
 color: white;
   font-family: MONOSPACE
 }
@@ -52,7 +52,7 @@ padding: 15px;
 margin: 5px 0 22px 0;
 display: inline-block;
 border: none;
-background-color:#b5b0a1;
+background-color:lightblue;
 border: 1px solid white;
 }
 
@@ -65,8 +65,8 @@ margin-bottom: 25px;
 
 /* Set a style for the submit button */
 .registerbtn {
-background-color: #b5b0a1;
-color: white;
+background-color: blueviolet;
+color: blueviolet;
 padding: 16px 20px;
 margin: 8px 0;
 border: none;
@@ -91,13 +91,13 @@ text-align: center;
 }
 
 tr{
-  background-color: #b5b0a1;
+  background-color: whitesmoke;
 }
 .table-striped>tbody>tr:nth-of-type(odd) {
-  background-color: #211f1e;
+  background-color: lightblue;
 }
 .table{
-  color:black;
+  color:blueviolet;
 }
 .card {
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

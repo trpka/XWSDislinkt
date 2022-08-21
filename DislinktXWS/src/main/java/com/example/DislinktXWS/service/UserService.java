@@ -48,6 +48,14 @@ public class UserService {
     }
 
 
+    //Pronalazenje Korisnika po korisnickom imenu ****** novo
+    public User getByUsername(String username)
+    {
+        User user = userRepository.getByUsername(username);
+        return  user;
+    }
+
+
 
     public void delete(User user) {
         this.userRepository.delete(user);

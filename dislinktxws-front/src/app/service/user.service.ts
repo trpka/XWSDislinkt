@@ -8,6 +8,7 @@ import { User } from '../model/user';
 })
 export class UserService {
   url="http://localhost:8081/api/user";
+  url1 = "http://localhost:8081/api/search";
   
   constructor(private http:HttpClient) { }
 
@@ -18,4 +19,13 @@ export class UserService {
   findUserById(id:number):Observable<User>{
     return this.http.get<User>(`${this.url}/${id}`);
   }
+
+  //Pronalazenje Korisnika Po Korisnickom Imenu
+  searchByPartUsername(username:string):Observable<User>
+  {
+    return this.http.get<User>(`${this.url1}/${username}`)
+  }
+
+
+
 }
