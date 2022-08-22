@@ -16,6 +16,7 @@ import { OnePostComponent } from './one-post/one-post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SearchComponent } from './search/search.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SearchComponent } from './search/search.component';
     ProfileComponent,
     RegistrationComponent,
     SearchComponent,
+    AllUsersComponent,
 
   ],
   imports: [

@@ -1,36 +1,36 @@
 /* Remove the navbar's default margin-bottom and rounded borders */ 
 .navbar {
-    margin-bottom: 0;
-    border-radius: 0;
-    font-family: MONOSPACE;
-    color:white;
-  }
-  
-  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-  .row.content {height: 450px}
-  
-  /* Set gray background color and 100% height */
+  margin-bottom: 0;
+  border-radius: 0;
+  font-family: MONOSPACE;
+  color:white;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #211f1e;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
   .sidenav {
-    padding-top: 20px;
-    background-color: #211f1e;
-    height: 100%;
-  }
-  
-  /* Set black background color, white text and some padding */
-  footer {
-    background-color: #555;
-    color: white;
+    height: auto;
     padding: 15px;
-  }
-  
-  /* On small screens, set height to 'auto' for sidenav and grid */
-  @media screen and (max-width: 767px) {
-    .sidenav {
-      height: auto;
-      padding: 15px;
-    }z
-    .row.content {height:auto;} 
-  }
+  }z
+  .row.content {height:auto;} 
+}
 
 
 * {
@@ -42,7 +42,7 @@ box-sizing: border-box;
 padding: 16px;
 background-color: blueviolet;
 color: white;
-  font-family: MONOSPACE
+font-family: MONOSPACE
 }
 
 /* Full-width input fields */
@@ -91,13 +91,13 @@ text-align: center;
 }
 
 tr{
-  background-color: lightblue;
+background-color: lightblue;
 }
 .table-striped>tbody>tr:nth-of-type(odd) {
-  background-color: blueviolet;
+background-color: blueviolet;
 }
 .table{
-  color:black;
+color:black;
 }
 .card {
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -107,3 +107,6 @@ text-align: center;
 font-family: MONOSPACE;
 color:white;
 }
+
+
+

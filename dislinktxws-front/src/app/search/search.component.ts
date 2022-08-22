@@ -13,16 +13,26 @@ export class SearchComponent implements OnInit
 {
   username:string;
   user:User;
+  users:User[];
 
   
   constructor(private route: ActivatedRoute, private userService:UserService) { }
 
+ 
+
   ngOnInit(): void 
   {
-    this.loadPost();
+    this.reloadUsers();
+    this.loadUser();
   }
 
-  loadPost()
+  reloadUsers()
+  {
+     this.userService.getUsers()
+     .subscribe(res => this.users = res);
+  }
+
+  loadUser()
   {
     this.username = this.route.snapshot.params['username'];
     this.userService.searchByPartUsername(this.username)

@@ -35,7 +35,7 @@ public class UserController {
 
     /*@RequestMapping(value="api/search/{username}",method = RequestMethod.GET,produces= {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<?> searchByPartUsername(@PathVariable String username)
+    public ResponseEntity<List<User>> searchByPartUsername(@PathVariable String username)
     {
         List<User> users = userService.searchByPartUsername(username);
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);

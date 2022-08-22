@@ -1,6 +1,7 @@
 import { Comment } from "./comment.model";
 import { Post } from "./post.model";
 
+
 interface UserInterface{
     id?:number;
     firstName: string;
