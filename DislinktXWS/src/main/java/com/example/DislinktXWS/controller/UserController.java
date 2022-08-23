@@ -47,22 +47,13 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    //Izmena podataka o korisniku
-    /*@RequestMapping(value="api/update/{username}",method = RequestMethod.PUT,produces= {
-            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<User> UpdateUser(@PathVariable String username, User u)
-    {
-        User user=this.userService.UpdateUser(username, u);
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }*/
 
-    //Lazina izmena podataka
-
-    @PutMapping("api/update/{username}")
-    public ResponseEntity<User> updateUser(@PathVariable(value = "id") String userId,
-                                           @RequestBody User user)
+    //Izmena Podataka o Useru
+    @PutMapping("api/update")
+    public ResponseEntity<User> UpdateUser(@RequestBody User u)
     {
-        return userService.updateUser(userId, user);
+        User user = this.userService.UpdateUser(u);
+        return  new ResponseEntity<>(user,HttpStatus.OK);
     }
 
 

@@ -60,30 +60,27 @@ public class UserService {
 
     //Izmena podataka  o Useru
 
-    /*public User UpdateUser(String username, User u)
+    public User UpdateUser(User u)
     {
+        User editUser = userRepository.getByUsername(u.getUsername());
+
+        editUser.setFirstName(u.getFirstName());
+        editUser.setLastName(u.getLastName());
+        editUser.setUsername(u.getUsername());
+        editUser.setPassword(u.getPassword());
+        editUser.setEmail(u.getEmail());
+        editUser.setDateOfBirth(u.getDateOfBirth());
+
+        return  this.userRepository.save(editUser);
+
+    }
+
+
+    //ZZZ deo
+   /* public ResponseEntity<User> updateUser(String username, @RequestBody User u)
+    {
+
         User user = userRepository.getByUsername(username);
-        System.out.println("prosledjeni User" + u.getUsername());
-        System.out.println("pronadjeni User" + user.getUsername());
-
-        user.setFirstName(u.getFirstName());
-        user.setLastName(u.getLastName());
-        user.setUsername(u.getUsername());
-        user.setPassword(u.getPassword());
-        user.setEmail(u.getEmail());
-        user.setDateOfBirth(u.getDateOfBirth());
-
-        userRepository.save(user);
-        return user;
-
-    }*/
-
-
-    //Kinezov deo
-    public ResponseEntity<User> updateUser(String userId,
-                                           @RequestBody User u)  {
-
-        User user = userRepository.getByUsername(userId);
         System.out.println("prosledjeni user " + u.getUsername());
         System.out.println("pronadjeni user " + user.getUsername());
         user.setFirstName(u.getFirstName());
@@ -94,7 +91,7 @@ public class UserService {
         user.setDateOfBirth(u.getDateOfBirth());
         final User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
-    }
+    }*/
 
 
 
