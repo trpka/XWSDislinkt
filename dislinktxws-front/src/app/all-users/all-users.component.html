@@ -1,0 +1,46 @@
+<p>all-users works!</p>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8"/>
+</head>
+
+
+
+<label for="username">Find By Username :</label><br/>
+<input name = "username" id = "username" type = "text" [(ngModel)] = "username"><br>
+<button class="btn btn-success" (click)="  FindUserByUsername()">Search</button>
+
+
+<div>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>email</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody >
+      <tr  *ngFor="let user of users"  >  
+                <td>{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.dateOfBirth}}</td>
+            </tr>
+    </tbody>
+    </table>
+  </div>
+
+
+
+
+  
+

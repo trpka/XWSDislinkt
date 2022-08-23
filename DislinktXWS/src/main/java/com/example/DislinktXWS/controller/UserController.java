@@ -7,8 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @CrossOrigin("*")
 @RestController
 public class UserController {
@@ -29,5 +27,60 @@ public class UserController {
         User savedUser=this.userService.save(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
+
+    //Pronalazenje Usera Po Delu Korisnickog imena
+
+    /*@RequestMapping(value="api/search/{username}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<List<User>> searchByPartUsername(@PathVariable String username)
+    {
+        List<User> users = userService.searchByPartUsername(username);
+        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }*/
+
+    //Pronalazenje Korisnika po korisnickom imenu
+    @RequestMapping(value="api/search/{username}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<User> getByUsername(@PathVariable String username)
+    {
+        User user=this.userService.getByUsername(username);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    //Izmena podataka o korisniku
+    /*@RequestMapping(value="api/update/{username}",method = RequestMethod.PUT,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<User> UpdateUser(@PathVariable String username, User u)
+    {
+        User user=this.userService.UpdateUser(username, u);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }*/
+
+    //Lazina izmena podataka
+
+    @PutMapping("api/update/{username}")
+    public ResponseEntity<User> updateUser(@PathVariable(value = "id") String userId,
+                                           @RequestBody User user)
+    {
+        return userService.updateUser(userId, user);
+    }
+
+
+
+
+
+
+    @DeleteMapping("/api/delete/{id}")
+    public String delete(@PathVariable(name = "id") Long id)
+    {
+        User user = userService.findById(id);
+        this.userService.delete(user);
+        return "Succesfully deleted user!";
+    }
+
+
+
+
+
 
 }
