@@ -23,7 +23,7 @@ export class RegistrationComponent implements OnInit
           lastName: "",
           email: "",
           username:"",
-          passworde:"",
+          password:"",
           dateOfBirth:""
         }
       );

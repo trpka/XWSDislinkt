@@ -8,6 +8,7 @@ import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SearchComponent } from './search/search.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -16,11 +17,12 @@ const routes: Routes = [
   {path: 'post', component: PostComponent},
   {path: 'user/:id', component:ProfileComponent},
 
-  {path: 'login', component:LoginPageComponent}
+  {path: 'login', component:LoginPageComponent},
 
   {path: 'search/:username',component:SearchComponent},
   {path: 'users',component:AllUsersComponent},
-  {path: 'registration',component: RegistrationComponent}
+  {path: 'registration',component: RegistrationComponent},
+  {path: 'profile',component: UserProfileComponent}
 
 ];
 
