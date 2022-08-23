@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SearchComponent } from './search/search.component';
 
+
 const routes: Routes = [
   {path:'post/:id',component:OnePostComponent},
   {path: 'newComment/:idPost', component:CommentComponent},

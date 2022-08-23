@@ -9,14 +9,12 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import java.util.Date;
 import java.util.ArrayList;
 
 
 @Getter
 @Setter
 
-@Document(collection = "users")
 public class User {
 
     @Id

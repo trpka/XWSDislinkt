@@ -7,9 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @CrossOrigin("*")
 @RestController
 public class UserController {
@@ -49,6 +46,38 @@ public class UserController {
         User user=this.userService.getByUsername(username);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+    //Izmena podataka o korisniku
+    /*@RequestMapping(value="api/update/{username}",method = RequestMethod.PUT,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<User> UpdateUser(@PathVariable String username, User u)
+    {
+        User user=this.userService.UpdateUser(username, u);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }*/
+
+    //Lazina izmena podataka
+
+    @PutMapping("api/update/{username}")
+    public ResponseEntity<User> updateUser(@PathVariable(value = "id") String userId,
+                                           @RequestBody User user)
+    {
+        return userService.updateUser(userId, user);
+    }
+
+
+
+
+
+
+    @DeleteMapping("/api/delete/{id}")
+    public String delete(@PathVariable(name = "id") Long id)
+    {
+        User user = userService.findById(id);
+        this.userService.delete(user);
+        return "Succesfully deleted user!";
+    }
+
 
 
 

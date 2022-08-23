@@ -16,7 +16,7 @@ export class PostComponent implements OnInit {
     this.postToAdd=new Post(
       {
         id: 0,
-        ownerId:"",
+        ownerId:0,
         text:"",
         userIdWhoLikes:[],
         userIdWhoDislikes:[],
