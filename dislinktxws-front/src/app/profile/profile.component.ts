@@ -9,8 +9,8 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  id:number;
   user:User;
+  id:number;
   constructor(private route: ActivatedRoute, private userService:UserService) { }
 
   ngOnInit(): void {

@@ -20,6 +20,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SearchComponent } from './search/search.component';
 import { AllUsersComponent } from './all-users/all-users.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AllUsersComponent } from './all-users/all-users.component';
 
     RegistrationComponent,
     SearchComponent,
-    AllUsersComponent
+    AllUsersComponent,
+    UserProfileComponent
 
 
   ],
