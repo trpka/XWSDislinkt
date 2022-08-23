@@ -15,7 +15,7 @@ import java.util.List;
 public class Post {
     @Id
     private Long id;
-    private String ownerId;
+    private Long ownerId;
     private String text;
     private List<Long> userIdWhoLikes;
     private List<Long> userIdWhoDislikes;
@@ -29,11 +29,11 @@ public class Post {
         this.id = id;
     }
 
-    public String getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public void setOwnerId(String ownerId) {
+    public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
     }
 
@@ -69,7 +69,7 @@ public class Post {
         this.comments = comments;
     }
 
-    public Post(Long id, String ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments) {
+    public Post(Long id, Long ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments) {
         this.id = id;
         this.ownerId = ownerId;
         this.text = text;
@@ -78,7 +78,7 @@ public class Post {
         this.comments = comments;
     }
 
-    public Post(String ownerId, String text) {
+    public Post(Long ownerId, String text) {
         this.ownerId = ownerId;
         this.text = text;
         this.userIdWhoLikes = new ArrayList<>();

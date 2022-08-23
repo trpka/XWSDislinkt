@@ -14,6 +14,7 @@ import { CommentComponent } from './comment/comment.component';
 import { PostComponent } from './post/post.component';
 import { OnePostComponent } from './one-post/one-post.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
     PostComponent,
     OnePostComponent,
     ProfileComponent,
+    LoginPageComponent,
 
   ],
   imports: [

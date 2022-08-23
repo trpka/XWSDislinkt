@@ -35,7 +35,7 @@ export class CommentComponent implements OnInit {
       post:new Post(
         {
           id: 0,
-          ownerId:"",
+          ownerId:0,
           text:"",
           userIdWhoLikes:[],
           userIdWhoDislikes:[],

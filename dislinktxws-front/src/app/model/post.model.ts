@@ -2,7 +2,7 @@ import { Comment } from "./comment.model";
 
 interface PostInterface{
     id?:number;
-    ownerId:string;
+    ownerId:number;
     text:string;
     userIdWhoLikes:number[];
     userIdWhoDislikes:number[];
@@ -10,7 +10,7 @@ interface PostInterface{
 }
 export class Post implements PostInterface{
     id?:number;
-    ownerId:string;
+    ownerId:number;
     text:string;
     userIdWhoLikes:number[];
     userIdWhoDislikes:number[];

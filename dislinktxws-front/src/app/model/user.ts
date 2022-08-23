@@ -7,7 +7,7 @@ interface UserInterface{
     lastName: string;
     email: string;
     username: string ;
-    passworde: string ;
+    password: string ;
     dateOfBirth: string ;
     
 }
@@ -17,7 +17,7 @@ export class User implements UserInterface{
     lastName: string;
     email: string;
     username: string ;
-    passworde: string ;
+    password: string ;
     dateOfBirth: string ;
     constructor(obj:UserInterface){
         this.id=obj.id;
@@ -25,7 +25,7 @@ export class User implements UserInterface{
         this.lastName=obj.lastName;
         this.email=obj.email;
         this.username=obj.username;
-        this.passworde=obj.passworde;
+        this.password=obj.password;
         this.dateOfBirth=obj.dateOfBirth;
     } 
 }
