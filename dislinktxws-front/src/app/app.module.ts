@@ -14,10 +14,12 @@ import { CommentComponent } from './comment/comment.component';
 import { PostComponent } from './post/post.component';
 import { OnePostComponent } from './one-post/one-post.component';
 import { ProfileComponent } from './profile/profile.component';
+
+import { LoginPageComponent } from './login-page/login-page.component';
+
 import { RegistrationComponent } from './registration/registration.component';
 import { SearchComponent } from './search/search.component';
 import { AllUsersComponent } from './all-users/all-users.component';
-
 
 @NgModule({
   declarations: [
@@ -27,9 +29,13 @@ import { AllUsersComponent } from './all-users/all-users.component';
     PostComponent,
     OnePostComponent,
     ProfileComponent,
+
+    LoginPageComponent,
+
     RegistrationComponent,
     SearchComponent,
-    AllUsersComponent,
+    AllUsersComponent
+
 
   ],
   imports: [
