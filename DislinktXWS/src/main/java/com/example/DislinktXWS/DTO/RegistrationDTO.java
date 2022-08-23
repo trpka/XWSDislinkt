@@ -1,24 +1,8 @@
-package com.example.DislinktXWS.model;
+package com.example.DislinktXWS.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-import java.util.ArrayList;
-
-
-@Getter
-@Setter
-
-public class User {
-
-    @Id
-    private Long id;
+public class RegistrationDTO
+{
+    private long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -26,12 +10,28 @@ public class User {
     private String password;
     private String dateOfBirth;
 
-    public Long getId() {
+    public RegistrationDTO()
+    {
+
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public RegistrationDTO(long id, String firstName, String lastName, String email,
+                           String username, String password, String dateOfBirth)
+    {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName  = lastName;
+        this.email     = email;
+        this.password  = password;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getFirstName() {
@@ -82,19 +82,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public User(Long id, String firstName, String lastName, String email, String username, String password, String dateOfBirth) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-    }
 
-    public User()
-    {
-
-    }
 
 }

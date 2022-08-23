@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.userService.findUserById(this.id)
     .subscribe(res=>this.user=res)
+  
   }
 
 }

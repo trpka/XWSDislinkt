@@ -14,6 +14,9 @@ import { CommentComponent } from './comment/comment.component';
 import { PostComponent } from './post/post.component';
 import { OnePostComponent } from './one-post/one-post.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { SearchComponent } from './search/search.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { ProfileComponent } from './profile/profile.component';
     PostComponent,
     OnePostComponent,
     ProfileComponent,
+    RegistrationComponent,
+    SearchComponent,
+    AllUsersComponent,
 
   ],
   imports: [
