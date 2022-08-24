@@ -2,6 +2,7 @@ package com.example.DislinktXWS.controller;
 
 
 import com.example.DislinktXWS.model.Profile;
+import com.example.DislinktXWS.model.User;
 import com.example.DislinktXWS.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,16 @@ public class ProfileController {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Profile> getById(@PathVariable Long id){
         Profile profile=this.profileService.findById(id);
+        return new ResponseEntity<>(profile,HttpStatus.OK);
+    }
+
+
+    //Pronalazenje Profila po korisnickom imenu iz Profila
+    @RequestMapping(value="api/find/{username}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Profile> getByUsername(@PathVariable String username)
+    {
+        Profile profile=this.profileService.getByUsername(username);
         return new ResponseEntity<>(profile,HttpStatus.OK);
     }
 }

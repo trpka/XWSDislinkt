@@ -77,22 +77,7 @@ public class UserService {
     }
 
 
-    //ZZZ deo
-   /* public ResponseEntity<User> updateUser(String username, @RequestBody User u)
-    {
 
-        User user = userRepository.getByUsername(username);
-        System.out.println("prosledjeni user " + u.getUsername());
-        System.out.println("pronadjeni user " + user.getUsername());
-        user.setFirstName(u.getFirstName());
-        user.setLastName(u.getLastName());
-        user.setUsername(u.getUsername());
-        user.setPassword(u.getPassword());
-        user.setEmail(u.getEmail());
-        user.setDateOfBirth(u.getDateOfBirth());
-        final User updatedUser = userRepository.save(user);
-        return ResponseEntity.ok(updatedUser);
-    }*/
 
 
 
