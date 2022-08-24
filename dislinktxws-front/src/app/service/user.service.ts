@@ -10,6 +10,7 @@ export class UserService {
   url="http://localhost:8081/api/user";
   url1 = "http://localhost:8081/api/search";
   url2 = "http://localhost:8081/api/users";
+  url3 = "http://localhost:8081/api/update";
   
   constructor(private http:HttpClient) { }
 
@@ -33,6 +34,12 @@ export class UserService {
     return this.http.get<User>(`${this.url1}/${username}`)
   }
 
+  UpdateUser(user:User):Observable<User>
+  {
+    return this.http.put<User>(this.url3,user);
+  }
+
+  //Lista korisnika po delu korisnickog imena
   /*searchByPartUsername(username:string):Observable<User[]>
   {
     return this.http.get<User[]>(`${this.url1}/${username}`)
