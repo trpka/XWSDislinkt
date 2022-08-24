@@ -21,6 +21,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SearchComponent } from './search/search.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AllProfilesComponent } from './all-profiles/all-profiles.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RegistrationComponent,
     SearchComponent,
     AllUsersComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AllProfilesComponent
 
 
   ],

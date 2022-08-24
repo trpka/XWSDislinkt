@@ -1,5 +1,6 @@
 package com.example.DislinktXWS;
 
+import com.example.DislinktXWS.controller.ProfileController;
 import com.example.DislinktXWS.controller.UserController;
 import com.example.DislinktXWS.model.Comment;
 import com.example.DislinktXWS.model.Post;
@@ -30,6 +31,9 @@ public class InsertData {
     PostRepository postRepository;
     @Autowired
     ProfileRepository profileRepository;
+    @Autowired
+    UserController userController;
+
 
 
     @PostConstruct
@@ -83,6 +87,23 @@ public class InsertData {
         newProfile2.setPosts(posts);
         //Profile profile = new Profile(user,, edu, inter, skill, false);
         profileRepository.save(newProfile);
+
+       
+        User user3 = userRepository.getByUsername("laza");
+
+       
+
+
+        Profile newProfile3 = new Profile();
+        newProfile3.setId((long)3);
+        newProfile3.setEducation(list);
+        newProfile3.setExperience(list);
+        newProfile3.setInterests(list);
+        newProfile3.setSkills(list);
+        newProfile3.setPrivate(false);
+        newProfile3.setUser(user3);
+        profileRepository.save(newProfile3);
+
         profileRepository.save(newProfile2);
 
 
