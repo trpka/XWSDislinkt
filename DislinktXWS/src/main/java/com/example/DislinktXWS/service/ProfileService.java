@@ -1,8 +1,10 @@
 package com.example.DislinktXWS.service;
 
+import com.example.DislinktXWS.model.Post;
 import com.example.DislinktXWS.model.Profile;
 import com.example.DislinktXWS.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,4 +46,5 @@ public class ProfileService {
     public List<Profile> findAll() {
         return this.profileRepository.findAll();
     }
+
 }

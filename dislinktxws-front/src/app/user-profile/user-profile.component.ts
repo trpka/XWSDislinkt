@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Post } from '../model/post.model';
+import { NewFollower} from '../model/newFollower';
 import { Profile } from '../model/profile';
+
 import { ProfileService } from '../service/profile.service';
 
 @Component({
@@ -11,17 +14,36 @@ import { ProfileService } from '../service/profile.service';
 export class UserProfileComponent implements OnInit {
   id:any;
   profile:Profile;
-  constructor(private route: ActivatedRoute, private profileService:ProfileService) { }
+  posts:Post[];
+  newFollower: NewFollower;
 
+  idFollower:any;
+  idUser: number;
+  constructor(private route: ActivatedRoute, private profileService:ProfileService) { }
+  
+  
   ngOnInit(): void {
-    this.loadPost()
+    this.loadProfile()
+    this.findPosts()
   }
 
-  loadPost(){
-    this.id = this.route.snapshot.params['id'];
+  findPosts(){
+    this.id = sessionStorage.getItem('id');
+    this.profileService.findAllPostsByOwnerId(this.id).subscribe((res: Post[]) => {
+      this.posts = res;
+    });
+   
+  }
+
+  loadProfile(){
+    this.id = sessionStorage.getItem('id');
     this.profileService.findProfileById(this.id)
     .subscribe(res=>this.profile=res)
   
+  }
+
+  followProfile(){
+    this.idFollower = sessionStorage.getItem('id');
   }
 
 }

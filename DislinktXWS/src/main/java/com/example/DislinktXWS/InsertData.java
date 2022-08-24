@@ -38,8 +38,17 @@ public class InsertData {
 
         //Comment com1=new Comment((long)1,1,"blablablabla");
         //repository.save(com1);
-        User user = new User((long)1, "Jovan", "Jovic", "jova@gmail.com", "jovajovic", "sifra123","29.08.1999.");
+        User user = new User((long)1, "Pera", "Peric", "jova@gmail.com", "pera", "123","29.08.1999.");
         userRepository.save(user);
+
+        User user2 = new User((long)2, "Jova", "Jovic", "jova@gmail.com", "jova", "123","14.11.1999.");
+        userRepository.save(user2);
+
+        List<Long> li1 = new ArrayList<>();
+        List<Comment> li2 = new ArrayList<>();
+        Post post = new Post((long)1, "post test", li1, li1, li2);
+        List<Post> posts = new ArrayList<>();
+        posts.add(post);
 
         /*List<String> exp = Arrays.asList("work in team", "work online");
 
@@ -61,7 +70,21 @@ public class InsertData {
         newProfile.setSkills(list);
         newProfile.setPrivate(false);
         newProfile.setUser(user);
+        newProfile.setPosts(posts);
+
+        Profile newProfile2 = new Profile();
+        newProfile2.setId((long)2);
+        newProfile2.setEducation(list);
+        newProfile2.setExperience(list);
+        newProfile2.setInterests(list);
+        newProfile2.setSkills(list);
+        newProfile2.setPrivate(false);
+        newProfile2.setUser(user2);
+        newProfile2.setPosts(posts);
         //Profile profile = new Profile(user,, edu, inter, skill, false);
         profileRepository.save(newProfile);
+        profileRepository.save(newProfile2);
+
+
     }
 }
