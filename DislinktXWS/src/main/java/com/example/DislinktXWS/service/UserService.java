@@ -64,6 +64,7 @@ public class UserService {
     {
         User editUser = userRepository.getByUsername(u.getUsername());
 
+
         editUser.setFirstName(u.getFirstName());
         editUser.setLastName(u.getLastName());
         editUser.setUsername(u.getUsername());

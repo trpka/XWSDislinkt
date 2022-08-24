@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit
 
   ngOnInit(): void 
   {
-    this.reloadUsers();
+    
     this.loadUser();
   }
 
@@ -37,6 +37,13 @@ export class SearchComponent implements OnInit
     this.username = this.route.snapshot.params['username'];
     this.userService.searchByPartUsername(this.username)
     .subscribe(res => this.user=res)
+  }
+
+  UpdateUser()
+  {
+    this.userService.UpdateUser(this.user)
+    .subscribe(res => this.user=res)
+    window.location.reload()
   }
 
 }
