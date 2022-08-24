@@ -11,6 +11,7 @@ export class ProfileService {
 
   url="http://localhost:8081/api/profile";
   ur2="http://localhost:8081/api/profile/posts";
+  url3="http://localhost:8081/api/find";
 
   constructor(private http:HttpClient) {}
 
@@ -28,6 +29,11 @@ export class ProfileService {
   findProfileById(id:number):Observable<Profile>{
     return this.http.get<Profile>(`${this.url}/${id}`);
   }
+
+   searchProfileByUsername(username:string):Observable<Profile>
+   {
+      return this.http.get<Profile>(`${this.url3}/${username}`)
+   }
 
 
 }

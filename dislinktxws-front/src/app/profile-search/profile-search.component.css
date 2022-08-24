@@ -1,0 +1,25 @@
+.Profile {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 30px;
+  }
+
+  label {
+    float: left;
+    width: 9em;
+    margin-right: 1em;
+    text-align: right;
+    }
+
+.container {
+      margin: auto;
+      width: 50%;
+      border: 3px solid green;
+      padding: 30px;
+    }
+  
+    button {
+      font-size: 1em;
+      margin: 5px;
+    }

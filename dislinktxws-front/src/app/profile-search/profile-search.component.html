@@ -1,0 +1,37 @@
+<p>profile-search works!</p>
+
+<div class = "Profile">
+    <form >
+        <label for="firstName">First name :</label>
+        <p>{{profile.user.firstName}}</p>
+       <label for="lastName">Last name: </label>
+        <p>{{profile.user.lastName}}</p>
+        <label for="email">Email: </label>
+        <p>{{profile.user.email}}</p>
+        <label for="username">Username:</label>
+        <p>{{profile.user.username}}</p>
+        <label for="dateOfBirth">Date of birth:</label>
+        <p>{{profile.user.dateOfBirth}}</p>
+        <label for="experience">Experience </label>
+        <ul>
+            <li ng-repeat="experience">{{profile.experience}}</li>
+        </ul>
+        <label for="education">Education </label>
+        <ul>
+            <li ng-repeat="education">{{profile.education}}</li>
+        </ul>
+        <label for="interests">Interests</label>
+        <ul>
+            <li ng-repeat="interests">{{profile.interests}}</li>
+        </ul>
+        <label for="skills">Skills </label>
+        <ul>
+            <li ng-repeat="skills">{{profile.skills}}</li>
+        </ul>
+        <label for="isPrivate">Profil is:</label>
+        <p>{{profile.isPrivate}}</p>
+        <br>
+       
+        
+    </form>
+</div>
