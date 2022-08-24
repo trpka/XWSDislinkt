@@ -45,9 +45,6 @@ export class AllUsersComponent implements OnInit {
     this.userService.searchByPartUsername(this.username)
     .subscribe(_=>this.userProfile())
 
-    
-    
-    
   }
 
 }
