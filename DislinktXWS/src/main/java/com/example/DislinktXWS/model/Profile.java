@@ -29,6 +29,8 @@ public class Profile {
     private List<String> interests;
     private List<String> skills;
     private boolean isPrivate;
+    private List<Post> posts;
+    private List<Long> followers;
 
     public Long getId() {
         return id;
@@ -44,6 +46,14 @@ public class Profile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Long> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(List<Long> followers) {
+        this.followers = followers;
     }
 
     public List<String> getExperience() {
@@ -86,6 +96,14 @@ public class Profile {
         isPrivate = aPrivate;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     public Profile(User user, List<String> experience, List<String> education, List<String> interests, List<String> skills, boolean isPrivate) {
         this.user = user;
         this.experience = experience;
@@ -93,6 +111,16 @@ public class Profile {
         this.interests = interests;
         this.skills = skills;
         this.isPrivate = isPrivate;
+    }
+
+    public Profile(User user, List<String> experience, List<String> education, List<String> interests, List<String> skills, boolean isPrivate, List<Post> posts) {
+        this.user = user;
+        this.experience = experience;
+        this.education = education;
+        this.interests = interests;
+        this.skills = skills;
+        this.isPrivate = isPrivate;
+        this.posts = posts;
     }
 
     public Profile()
