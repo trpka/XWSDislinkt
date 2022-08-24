@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,5 +48,23 @@ public class PostService {
     public List<Post> findAll() {
        return this.postRepository.findAll();
     }
+
+    public List<Post> findAllPostsByOwnerId(Long id) {
+
+        List<Post> allPosts = postRepository.findAll();
+        List<Post> findedPosts = new ArrayList<>();
+
+        for (Post p:allPosts)
+        {
+            if(p.getOwnerId() == id)
+            {
+                findedPosts.add(p);
+            }
+
+
+        }
+        return findedPosts;
+    }
+
 
 }

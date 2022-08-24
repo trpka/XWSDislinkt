@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit {
         (data: any) => {
           console.log(data)
           this.LogIn.next();
-          this.router.navigate(['']);
+          this.router.navigate(['/profile']);
           this.invalidLogin = false
         },
         (error: { message: string | null; }) => {

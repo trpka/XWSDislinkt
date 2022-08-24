@@ -78,6 +78,14 @@ public class Post {
         this.comments = comments;
     }
 
+    public Post(Long ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments) {
+        this.ownerId = ownerId;
+        this.text = text;
+        this.userIdWhoLikes = userIdWhoLikes;
+        this.userIdWhoDislikes = userIdWhoDislikes;
+        this.comments = comments;
+    }
+
     public Post(Long ownerId, String text) {
         this.ownerId = ownerId;
         this.text = text;

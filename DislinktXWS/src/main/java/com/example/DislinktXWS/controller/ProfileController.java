@@ -1,7 +1,9 @@
 package com.example.DislinktXWS.controller;
 
 
+import com.example.DislinktXWS.model.Post;
 import com.example.DislinktXWS.model.Profile;
+import com.example.DislinktXWS.service.PostService;
 import com.example.DislinktXWS.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ public class ProfileController {
 
     @Autowired
     private ProfileService profileService;
+
+    @Autowired
+    private PostService postService;
 
     @RequestMapping(value="api/profile",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -47,4 +52,12 @@ public class ProfileController {
         Profile profile=this.profileService.findById(id);
         return new ResponseEntity<>(profile,HttpStatus.OK);
     }
+
+    @RequestMapping(value="api/profile/posts/{id}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<Post>> findAllPostsByOwnerId(@PathVariable Long id){
+        List<Post> posts=this.postService.findAllPostsByOwnerId(id);
+        return new ResponseEntity<>(posts,HttpStatus.OK);
+    }
+
 }

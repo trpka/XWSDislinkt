@@ -1,3 +1,4 @@
+import { Post } from "./post.model";
 import { User } from "./user";
 
 interface ProfileInterface{
@@ -8,6 +9,7 @@ interface ProfileInterface{
     interests:string[];
     skills:string[];
     isPrivate: boolean;
+    posts: Post[];
     
 }
 export class Profile implements ProfileInterface{
@@ -18,6 +20,7 @@ export class Profile implements ProfileInterface{
     interests:string[];
     skills:string[];
     isPrivate: boolean;
+    posts: Post[];
    
     constructor(obj:ProfileInterface){
         this.id=obj.id;
@@ -27,6 +30,7 @@ export class Profile implements ProfileInterface{
         this.interests=obj.interests;
         this.skills=obj.skills;
         this.isPrivate=obj.isPrivate;
+        this.posts = obj.posts;
         
     } 
 }
