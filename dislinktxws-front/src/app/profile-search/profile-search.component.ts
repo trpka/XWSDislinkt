@@ -10,7 +10,8 @@ import { ProfileService } from '../service/profile.service';
   templateUrl: './profile-search.component.html',
   styleUrls: ['./profile-search.component.css']
 })
-export class ProfileSearchComponent implements OnInit {
+export class ProfileSearchComponent implements OnInit 
+{
   id:any;
   profile:Profile;
   posts:Post[];
@@ -25,6 +26,8 @@ export class ProfileSearchComponent implements OnInit {
   ngOnInit(): void 
   {
      this.loadProfile();
+     this.findProfileById();
+     this.findPosts();
   }
 
   loadProfile()
@@ -33,5 +36,22 @@ export class ProfileSearchComponent implements OnInit {
      this.profileService.searchProfileByUsername(this.username)
      .subscribe(res => this.profile=res)
   }
+
+  //Pretraga Profila Po ID-ju, zato sto ne mozemo kasnije, postove 
+  //pronaci po username-u, mora ID
+  findProfileById()
+  {
+    this.id = sessionStorage.getItem('id');
+    this.profileService.findProfileById(this.id)
+    .subscribe(res=>this.profile=res)
+  }
+
+  findPosts()
+  {
+    this.id = sessionStorage.getItem('id');
+    this.profileService.findAllPostsByOwnerId(this.id).subscribe((res: Post[]) => {
+      this.posts = res;
+    });
+  }  
 
 }

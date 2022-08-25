@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProfileRepository extends MongoRepository<Profile, Long>
 {
-
+    Profile getById(Long id);
 }

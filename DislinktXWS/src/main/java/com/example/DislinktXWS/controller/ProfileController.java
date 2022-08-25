@@ -74,5 +74,12 @@ public class ProfileController {
         return new ResponseEntity<>(posts,HttpStatus.OK);
     }
 
+    @PutMapping("api/edit")
+    public ResponseEntity<Profile> UpdateProfile(@RequestBody Profile p)
+    {
+        Profile profile = this.profileService.UpdateProfile(p);
+        return  new ResponseEntity<>(profile,HttpStatus.OK);
+    }
+
 
 }

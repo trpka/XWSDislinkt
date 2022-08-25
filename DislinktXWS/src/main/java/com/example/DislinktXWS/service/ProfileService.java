@@ -69,9 +69,22 @@ public class ProfileService {
             }
         }
             return  searched_profile;
-
-
     }
+
+    public Profile UpdateProfile(Profile p)
+    {
+        Profile editProfile = profileRepository.getById(p.getId());
+
+        editProfile.setUser(p.getUser());
+        editProfile.setEducation(p.getEducation());
+        editProfile.setExperience(p.getExperience());
+        editProfile.setSkills(p.getSkills());
+        editProfile.setInterests(p.getInterests());
+        editProfile.setPrivate(p.isPrivate());
+
+        return this.profileRepository.save(editProfile);
+    }
+
 
 
 
