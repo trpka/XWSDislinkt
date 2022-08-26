@@ -28,15 +28,32 @@
         </ul>
         <label for="privateProfile">Profil is:</label>
         <p>{{profile.privateProfile}}</p>
+        <label for="numberOfFollowers">Follower number:</label>
+        <p>{{numberOfFollowers}}</p>
+        <!--<button class="btn btn-success" (click)="listOfFollowers()">See list of followers</button>-->
         <br>
-        <button class="btn btn-success" (click)="followProfile()">Follow</button>
-       
+        <button class="btn btn-success" (click)="followProfile()" *ngIf="showFollowButton()">Follow</button>
+        <button class="btn btn-success" (click)="seeAllFollowers()">See all followers</button>
         
     </form>
 </div>
+<div class="container" *ngIf="showFollowers">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Profiles that follow you</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of listOfFollowers1">
+                <td>{{l.username}}</td>
+                <td><button class="btn btn-success" (click)="blockUser()">Block</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-<div class="container" *ngIf="
-profile.privateProfile">
+<div class="container" *ngIf="profile.privateProfile">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -46,6 +63,7 @@ profile.privateProfile">
         <tbody>
             <tr *ngFor="let f of followRequests">
                 <td>{{f.usernameWhoWantToFollow}}</td>
+                <td><button class="btn btn-success" (click)="acceptRequest(f)">Accept</button></td>
             </tr>
         </tbody>
     </table>
@@ -63,6 +81,7 @@ profile.privateProfile">
             <tr *ngFor="let post of posts">
                 <td>{{post.ownerId}}</td>
                 <td>{{post.text}}</td>
+                <td><img src = "{{post.picture}}" style="height: 50px; border-radius: 50px;"></td>
             </tr>
         </tbody>
     </table>

@@ -70,6 +70,7 @@ public class FollowRequestService {
             }
 
         }
+        this.followRequestRepository.save(followRequest);
         return profileRepository.save(profile);
     }
 
@@ -79,7 +80,7 @@ public class FollowRequestService {
 
         for (FollowRequest f:allFollowRequest)
         {
-            if(f.getUsername().equals(username))
+            if(f.getUsername().equals(username) && f.isFollowRequest()==false)
             {
                 foundedFollowRequest.add(f);
             }

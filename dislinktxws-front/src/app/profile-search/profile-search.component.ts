@@ -61,7 +61,6 @@ export class ProfileSearchComponent implements OnInit
       this.posts = res;
     });
   }  
- 
 
   UpdateProfile()
   {
