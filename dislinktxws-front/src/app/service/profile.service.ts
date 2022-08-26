@@ -12,6 +12,7 @@ export class ProfileService {
   url="http://localhost:8081/api/profile";
   ur2="http://localhost:8081/api/profile/posts";
   url3="http://localhost:8081/api/find";
+  url4 = "http://localhost:8081/api/edit";
 
   constructor(private http:HttpClient) {}
 
@@ -34,6 +35,14 @@ export class ProfileService {
    {
       return this.http.get<Profile>(`${this.url3}/${username}`)
    }
+
+   UpdateProfile(profile:Profile):Observable<Profile>
+   {
+    return this.http.put<Profile>(this.url4,profile);
+   }
+
+  
+   
 
 
 }
