@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NewFollower } from '../model/newFollower';
@@ -38,9 +38,16 @@ export class ProfileService {
     return this.http.post<Profile>(this.url+"/follower",newFollower);
   }
 
-   searchProfileByUsername(username:string):Observable<Profile>
+   /*searchProfileByUsername(username:string):Observable<Profile>
    {
       return this.http.get<Profile>(`${this.url3}/${username}`)
+   }*/
+
+   searchProfileByUsername(username:string):Observable<Profile>
+   {
+    const params:HttpParams=new HttpParams().append('username',username);
+    return this.http.get<Profile>(this.url,{params});
+      
    }
 
    UpdateProfile(profile:Profile):Observable<Profile>
