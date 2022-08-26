@@ -14,7 +14,6 @@ export class ProfileService {
   ur2="http://localhost:8081/api/profile/posts";
   url3="http://localhost:8081/api/find";
   url4 = "http://localhost:8081/api/edit";
-  url5 = "http://localhost:8081/api/id";
 
   constructor(private http:HttpClient) {}
   
@@ -54,13 +53,6 @@ export class ProfileService {
    {
     return this.http.put<Profile>(this.url4,profile);
    }
-
-   /*findUserIdFromProfile(username:string)
-   {
-    //return this.http.get<number>(`${this.url5}/${username}`);
-    //return this.http.get(`${this.url5}/${username}`);
-
-   }*/
 
   
    
