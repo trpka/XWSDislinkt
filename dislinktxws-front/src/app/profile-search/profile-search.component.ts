@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { range } from 'rxjs';
 import { Post } from '../model/post.model';
 import { Profile } from '../model/profile';
 import { ProfileService } from '../service/profile.service';
@@ -13,6 +14,7 @@ import { ProfileService } from '../service/profile.service';
 export class ProfileSearchComponent implements OnInit 
 {
   id:any;
+  user_id: number;
   profile:Profile;
   posts:Post[];
   username:string;
@@ -37,7 +39,15 @@ export class ProfileSearchComponent implements OnInit
      this.profileService.searchProfileByUsername(this.username)
     .subscribe(res => this.profile=res)
 
-    this.findPosts()
+    
+
+    this.profileService.findAllPostsByOwnerId(this.profile.id).subscribe((res: Post[]) => {
+      this.posts = res;
+    });
+
+    
+
+    //this.findPosts()
 
 
   }
@@ -52,11 +62,14 @@ export class ProfileSearchComponent implements OnInit
     .subscribe(res=>this.profile=res)
   }
 
+
   findPosts()
   {
     this.id = sessionStorage.getItem('id');
 
-
+    this.username = this.route.snapshot.params['username'];
+    this.profileService.searchProfileByUsername(this.username);
+    
     this.profileService.findAllPostsByOwnerId(this.profile.user.id).subscribe((res: Post[]) => {
       this.posts = res;
     });
