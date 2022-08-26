@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
   password = ''
   invalidLogin = false;
   error:string='';
+  idLoginUser:any;
   @Output()
   LogIn: EventEmitter<void> = new EventEmitter();
   constructor(private router: Router,
@@ -24,6 +25,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+ 
   login() {
     if (this.username == '' || this.password == '')
       this.error = "Username and password must be filled out";
@@ -32,7 +34,8 @@ export class LoginPageComponent implements OnInit {
         (data: any) => {
           console.log(data)
           this.LogIn.next();
-          this.router.navigate(['/profile']);
+          this.idLoginUser = sessionStorage.getItem('id');
+          this.router.navigate(['/profile',this.idLoginUser]);
           this.invalidLogin = false
         },
         (error: { message: string | null; }) => {

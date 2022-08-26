@@ -1,12 +1,13 @@
 package com.example.DislinktXWS.service;
 
-import com.example.DislinktXWS.model.Post;
+import com.example.DislinktXWS.DTO.NewFollowerDTO;
 import com.example.DislinktXWS.model.Profile;
 import com.example.DislinktXWS.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +46,29 @@ public class ProfileService {
 
     public List<Profile> findAll() {
         return this.profileRepository.findAll();
+    }
+
+
+    public Profile followProfile(NewFollowerDTO newFollowerDTO) {
+        Profile followedProfile = findById(newFollowerDTO.getIdProfileUser());
+        if(followedProfile.isPrivateProfile() == false)
+        {
+            if (followedProfile.getFollowers() == null) {
+                List<Long> initList = new ArrayList<>();
+                initList.add(newFollowerDTO.getIdFollowerUser());
+                followedProfile.setFollowers(initList);
+            } else{
+                followedProfile.getFollowers().add(newFollowerDTO.getIdFollowerUser());
+            }
+        }
+        else
+        {
+            System.out.print("profile is private");
+        }
+
+
+        return profileRepository.save(followedProfile);
+
     }
 
 }

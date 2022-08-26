@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'search/:username',component:SearchComponent},
   {path: 'users',component:AllUsersComponent},
   {path: 'registration',component: RegistrationComponent},
-  {path: 'profile',component: UserProfileComponent}
+  {path: 'profile/:id',component: UserProfileComponent}
 
 ];
 

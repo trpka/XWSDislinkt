@@ -5,6 +5,9 @@ import { NewFollower} from '../model/newFollower';
 import { Profile } from '../model/profile';
 
 import { ProfileService } from '../service/profile.service';
+import { User } from '../model/user';
+import { FollowRequestService } from '../service/follow-request.service';
+import { FollowRequest } from '../model/followRequest';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,34 +19,104 @@ export class UserProfileComponent implements OnInit {
   profile:Profile;
   posts:Post[];
   newFollower: NewFollower;
-
-  idFollower:any;
-  idUser: number;
-  constructor(private route: ActivatedRoute, private profileService:ProfileService) { }
+  followRequest: FollowRequest;
+  idProfile:number;
+  followRequests:FollowRequest[];
+  followerUsername:string;
+ 
+  constructor(private route: ActivatedRoute, private profileService:ProfileService, 
+  private followRequestService: FollowRequestService) { 
+    this.newFollower = new NewFollower({
+      idProfileUser : 0,
+      idFollowerUser : 0
+    }),
+    
+    this.profile = new Profile({
+      user : new User({
+      firstName: "",
+      lastName: "",
+      email: "",
+      username: "",
+      password: "",
+      dateOfBirth: "" 
+      }) ,
+      experience:[],
+      education:[],
+      interests:[],
+      skills:[],
+      privateProfile: true
+    }),
+    this.followRequest = new FollowRequest({
+      username:"",
+      usernameWhoWantToFollow:"",
+      followRequest:false
+    })
+    this.followRequests=[];
+  }
   
   
   ngOnInit(): void {
     this.loadProfile()
-    this.findPosts()
+    this.findProfiles()
+    //this.findAll()
+    this.findFollowRequests()
+   
   }
 
-  findPosts(){
-    this.id = sessionStorage.getItem('id');
+
+  findProfiles(){
+    this.id = this.route.snapshot.params['id'];
     this.profileService.findAllPostsByOwnerId(this.id).subscribe((res: Post[]) => {
       this.posts = res;
     });
    
   }
 
+
   loadProfile(){
-    this.id = sessionStorage.getItem('id');
+    this.id = this.route.snapshot.params['id'];
     this.profileService.findProfileById(this.id)
-    .subscribe(res=>this.profile=res)
-  
+    .subscribe(res=>{this.profile=res;  
+      console.log(this.profile.user.username);
+      console.log(this.profile.privateProfile)
+    })
   }
 
   followProfile(){
-    this.idFollower = sessionStorage.getItem('id');
+    if(this.profile.privateProfile == false){
+    this.newFollower.idFollowerUser = Number(sessionStorage.getItem('id')); 
+    this.newFollower.idProfileUser = Number(this.route.snapshot.params['id']);
+    console.log(this.newFollower)
+    this.profileService.followProfile(this.newFollower)
+    .subscribe()
+    }
+    else
+    {
+      this.followRequest.usernameWhoWantToFollow = String(sessionStorage.getItem('username'));
+      this.idProfile = Number(this.route.snapshot.params['id']);
+      this.profileService.findProfileById(this.idProfile)
+      .subscribe(res=>{this.followRequest.username=res.user.username;
+        this.followRequestService.save(this.followRequest)
+        .subscribe()
+      });
+    }
+    
   }
+
+  findAll(){
+    this.followRequestService.getFollowRequests()
+    .subscribe(res=>this.followRequests=res)
+  }
+
+  findFollowRequests(){
+    this.followerUsername = String(sessionStorage.getItem('username'));
+    this.followRequestService.findAllFollowRequestsByFollowerUsername(this.followerUsername)
+    .subscribe(res=>this.followRequests=res);
+    //.subscribe((res: FollowRequest[]) => {this.followRequests = res; });
+   
+    
+   
+  }
+  
 
 }

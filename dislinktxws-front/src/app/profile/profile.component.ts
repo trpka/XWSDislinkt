@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../model/user';
+import { ProfileService } from '../service/profile.service';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { UserService } from '../service/user.service';
 export class ProfileComponent implements OnInit {
   user:User;
   id:number;
-  constructor(private route: ActivatedRoute, private userService:UserService) { }
+  constructor(private route: ActivatedRoute,private userService:UserService,private profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.loadPost();

@@ -41,9 +41,11 @@ public class InsertData {
         role2.add(r1);
         User u1 = new User((long) 1, "pera", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Pera", "Peric", "perap@gmail.com", "069545266", "/assets/profilePicture/profile1.jpeg", true, role1, "User");
         User u2 = new User((long) 2, "jova", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Jova", "Jovic", "jovica@gmail.com", "0625487933", "/assets/profilePicture/profile2.jpeg", true, role2, "User");
+        User u3 = new User((long) 3, "steva", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Stevan", "Stefanovic", "steva@gmail.com", "063966733", "/assets/profilePicture/profile2.jpeg", true, role1, "User");
 
 
         userService.saveUser(u1);
         userService.saveUser(u2);
+        userService.saveUser(u3);
     }
 }

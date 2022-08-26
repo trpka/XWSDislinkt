@@ -1,14 +1,8 @@
 package com.example.DislinktXWS;
 
 import com.example.DislinktXWS.controller.UserController;
-import com.example.DislinktXWS.model.Comment;
-import com.example.DislinktXWS.model.Post;
-import com.example.DislinktXWS.model.Profile;
-import com.example.DislinktXWS.model.User;
-import com.example.DislinktXWS.repository.CommentRepository;
-import com.example.DislinktXWS.repository.PostRepository;
-import com.example.DislinktXWS.repository.ProfileRepository;
-import com.example.DislinktXWS.repository.UserRepository;
+import com.example.DislinktXWS.model.*;
+import com.example.DislinktXWS.repository.*;
 import com.example.DislinktXWS.service.CommentService;
 import com.example.DislinktXWS.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +24,8 @@ public class InsertData {
     PostRepository postRepository;
     @Autowired
     ProfileRepository profileRepository;
+    @Autowired
+    FollowRequestRepository followRequestRepository;
 
 
     @PostConstruct
@@ -42,6 +38,9 @@ public class InsertData {
         userRepository.save(user);
 
         User user2 = new User((long)2, "Jova", "Jovic", "jova@gmail.com", "jova", "123","14.11.1999.");
+        userRepository.save(user2);
+
+        User user3 = new User((long)3, "Stevan", "Stefanovic", "steva@gmail.com", "steva", "123","14.11.1999.");
         userRepository.save(user2);
 
         List<Long> li1 = new ArrayList<>();
@@ -68,9 +67,9 @@ public class InsertData {
         newProfile.setExperience(list);
         newProfile.setInterests(list);
         newProfile.setSkills(list);
-        newProfile.setPrivate(false);
+        newProfile.setPrivateProfile(false);
         newProfile.setUser(user);
-        newProfile.setPosts(posts);
+
 
         Profile newProfile2 = new Profile();
         newProfile2.setId((long)2);
@@ -78,13 +77,25 @@ public class InsertData {
         newProfile2.setExperience(list);
         newProfile2.setInterests(list);
         newProfile2.setSkills(list);
-        newProfile2.setPrivate(false);
+        newProfile2.setPrivateProfile(false);
         newProfile2.setUser(user2);
-        newProfile2.setPosts(posts);
+
+
+        Profile newProfile3 = new Profile();
+        newProfile3.setId((long)3);
+        newProfile3.setEducation(list);
+        newProfile3.setExperience(list);
+        newProfile3.setInterests(list);
+        newProfile3.setSkills(list);
+        newProfile3.setPrivateProfile(true);
+        newProfile3.setUser(user3);
+
         //Profile profile = new Profile(user,, edu, inter, skill, false);
         profileRepository.save(newProfile);
         profileRepository.save(newProfile2);
+        profileRepository.save(newProfile3);
 
-
+        FollowRequest followRequest = new FollowRequest((long)1,"steva","pera",false);
+        followRequestRepository.save(followRequest);
     }
 }
