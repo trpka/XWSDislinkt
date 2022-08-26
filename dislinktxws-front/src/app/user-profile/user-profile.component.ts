@@ -33,6 +33,7 @@ export class UserProfileComponent implements OnInit {
     
     this.profile = new Profile({
       user : new User({
+      id: 0,
       firstName: "",
       lastName: "",
       email: "",
