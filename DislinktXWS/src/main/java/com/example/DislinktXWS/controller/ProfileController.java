@@ -1,8 +1,13 @@
 package com.example.DislinktXWS.controller;
 
 
+import com.example.DislinktXWS.DTO.NewFollowerDTO;
 import com.example.DislinktXWS.model.Post;
 import com.example.DislinktXWS.model.Profile;
+
+import com.example.DislinktXWS.repository.ProfileRepository;
+
+
 
 import com.example.DislinktXWS.service.PostService;
 
@@ -24,6 +29,9 @@ public class ProfileController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private ProfileRepository profileRepository;
 
     @RequestMapping(value="api/profile",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -72,6 +80,22 @@ public class ProfileController {
         return new ResponseEntity<>(posts,HttpStatus.OK);
     }
 
+
+    @RequestMapping(value="api/profile/follower",method = RequestMethod.POST,
+            consumes= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Profile> followProfile(@RequestBody NewFollowerDTO newFollowerDTO){
+        Profile followedProfile=this.profileService.followProfile(newFollowerDTO);
+        return new ResponseEntity<>(followedProfile, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value="api/profile/findUsername/{id}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<String> getUserUsernameById(@PathVariable Long id){
+        Profile profile=this.profileRepository.findProfileById(id);
+        String username = profile.getUser().getUsername();
+        return new ResponseEntity<>(username,HttpStatus.OK);
+    }
+
     @PutMapping("api/edit")
     public ResponseEntity<Profile> UpdateProfile(@RequestBody Profile p)
     {
@@ -87,6 +111,7 @@ public class ProfileController {
         Long number = this.profileService.FindNumber(username);
         return number;
     }
+
 
 
 }

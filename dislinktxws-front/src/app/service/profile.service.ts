@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NewFollower } from '../model/newFollower';
 import { Post } from '../model/post.model';
 import { Profile } from '../model/profile';
 
@@ -15,7 +16,7 @@ export class ProfileService {
   url4 = "http://localhost:8081/api/edit";
 
   constructor(private http:HttpClient) {}
-
+  
   getProfiles():Observable<Profile[]>{
     return this.http.get<Profile[]>(this.url);
   }
@@ -31,6 +32,11 @@ export class ProfileService {
     return this.http.get<Profile>(`${this.url}/${id}`);
   }
 
+
+  followProfile(newFollower:NewFollower):Observable<Profile>{
+    return this.http.post<Profile>(this.url+"/follower",newFollower);
+  }
+
    searchProfileByUsername(username:string):Observable<Profile>
    {
       return this.http.get<Profile>(`${this.url3}/${username}`)
@@ -43,6 +49,7 @@ export class ProfileService {
 
   
    
+
 
 
 }

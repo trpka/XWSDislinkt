@@ -8,8 +8,8 @@ interface ProfileInterface{
     education:string[];
     interests:string[];
     skills:string[];
-    isPrivate: boolean;
-    posts: Post[];
+    privateProfile: boolean;
+    
     
 }
 export class Profile implements ProfileInterface{
@@ -19,8 +19,8 @@ export class Profile implements ProfileInterface{
     education:string[];
     interests:string[];
     skills:string[];
-    isPrivate: boolean;
-    posts: Post[];
+    privateProfile: boolean;
+    
    
     constructor(obj:ProfileInterface){
         this.id=obj.id;
@@ -29,8 +29,8 @@ export class Profile implements ProfileInterface{
         this.education=obj.education;
         this.interests=obj.interests;
         this.skills=obj.skills;
-        this.isPrivate=obj.isPrivate;
-        this.posts = obj.posts;
+        this.privateProfile=obj.privateProfile;
+        
         
     } 
 }

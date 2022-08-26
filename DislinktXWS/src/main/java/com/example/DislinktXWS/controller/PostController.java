@@ -36,11 +36,11 @@ public class PostController {
 
     @RequestMapping(value = "api/posts/{id}",method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable Long id){
-        Post itemOption=this.postService.findById(id);
-        if(itemOption==null) {
+        Post post=this.postService.findById(id);
+        if(post==null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        this.postService.delete(itemOption);
+        this.postService.delete(post);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @RequestMapping(value="api/post/{id}",method = RequestMethod.GET,produces= {
