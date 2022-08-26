@@ -5,6 +5,7 @@ import com.example.DislinktXWS.DTO.NewFollowerDTO;
 import com.example.DislinktXWS.model.Post;
 import com.example.DislinktXWS.model.Profile;
 
+import com.example.DislinktXWS.model.User;
 import com.example.DislinktXWS.repository.ProfileRepository;
 
 
@@ -120,6 +121,11 @@ public class ProfileController {
         return new ResponseEntity<>(profile,HttpStatus.OK);
     }
 
-
+    @RequestMapping(value="api/profile/allFollowers/{idUser}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<User>> findAllFollowers(@PathVariable Long idUser){
+        List<User> users=this.profileService.findAllFollowers(idUser);
+        return new ResponseEntity<>(users,HttpStatus.OK);
+    }
 
 }

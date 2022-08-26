@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { NewFollower } from '../model/newFollower';
 import { Post } from '../model/post.model';
 import { Profile } from '../model/profile';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,12 @@ export class ProfileService {
   findProfileById(id:number):Observable<Profile>{
     return this.http.get<Profile>(`${this.url}/${id}`);
   }
+
+  
+  findAllFollowers(id:number):Observable<User[]>{
+    return this.http.get<User[]>(`${this.url+"/allFollowers"}/${id}`);
+  }
+  
 
 
   followProfile(newFollower:NewFollower):Observable<Profile>{

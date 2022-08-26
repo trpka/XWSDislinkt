@@ -5,9 +5,11 @@ import com.example.DislinktXWS.model.Profile;
 import com.example.DislinktXWS.repository.ProfileRepository;
 import com.example.DislinktXWS.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.DislinktXWS.model.User;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -147,6 +149,21 @@ public class ProfileService {
             }
         }
         return null;
+    }
+
+    public List<User> findAllFollowers( Long idUser){
+        Profile profile = profileRepository.findProfileById(idUser);
+        List<Long> followers = profile.getFollowers();
+        List<User> users = userRepository.findAll();
+        List<User> findUsers = new ArrayList<>();
+
+        for (Long f:followers) {
+            for (User u:users) {
+                if(u.getId().equals(f))
+                    findUsers.add(u);
+            }
+        }
+        return findUsers;
     }
 
 }

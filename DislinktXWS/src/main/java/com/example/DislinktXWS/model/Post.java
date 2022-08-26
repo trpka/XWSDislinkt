@@ -20,6 +20,7 @@ public class Post {
     private List<Long> userIdWhoLikes;
     private List<Long> userIdWhoDislikes;
     private List<Comment> comments;
+    private String picture;
 
     public Long getId() {
         return id;
@@ -67,6 +68,24 @@ public class Post {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Post(Long id, Long ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments, String picture) {
+        this.id = id;
+        this.ownerId = ownerId;
+        this.text = text;
+        this.userIdWhoLikes = userIdWhoLikes;
+        this.userIdWhoDislikes = userIdWhoDislikes;
+        this.comments = comments;
+        this.picture = picture;
     }
 
     public Post(Long id, Long ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments) {

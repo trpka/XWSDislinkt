@@ -21,8 +21,12 @@ export class UserProfileComponent implements OnInit {
   newFollower: NewFollower;
   followRequest: FollowRequest;
   idProfile:number;
+  id1:number;
   followRequests:FollowRequest[];
   followerUsername:string;
+  numberOfFollowers: number;
+  listOfFollowers1:User[];
+  showFollowers = false;
  
   constructor(private route: ActivatedRoute, private profileService:ProfileService, 
   private followRequestService: FollowRequestService) { 
@@ -45,7 +49,8 @@ export class UserProfileComponent implements OnInit {
       education:[],
       interests:[],
       skills:[],
-      privateProfile: true
+      privateProfile: true,
+      followers : []
     }),
     this.followRequest = new FollowRequest({
       username:"",
@@ -53,6 +58,7 @@ export class UserProfileComponent implements OnInit {
       followRequest:false
     })
     this.followRequests=[];
+    this.numberOfFollowers = 0;
   }
   
   
@@ -61,7 +67,8 @@ export class UserProfileComponent implements OnInit {
     this.findProfiles()
     //this.findAll()
     this.findFollowRequests()
-   
+    this.listOfFollowers()
+    this.showFollowButton()
   }
 
 
@@ -77,9 +84,13 @@ export class UserProfileComponent implements OnInit {
   loadProfile(){
     this.id = this.route.snapshot.params['id'];
     this.profileService.findProfileById(this.id)
-    .subscribe(res=>{this.profile=res;  
-      console.log(this.profile.user.username);
-      console.log(this.profile.privateProfile)
+    .subscribe(res=>{this.profile=res;
+      for(var val of this.profile.followers)
+      { 
+        this.numberOfFollowers++;
+      }
+      
+      
     })
   }
 
@@ -114,10 +125,40 @@ export class UserProfileComponent implements OnInit {
     this.followRequestService.findAllFollowRequestsByFollowerUsername(this.followerUsername)
     .subscribe(res=>this.followRequests=res);
     //.subscribe((res: FollowRequest[]) => {this.followRequests = res; });
-   
-    
-   
+  }
+
+  listOfFollowers()
+  {
+    this.id1 = this.route.snapshot.params['id'];
+    this.profileService.findAllFollowers(this.id1)
+    .subscribe(res=>{this.listOfFollowers1=res;
+      console.log(res)
+    })
   }
   
+  blockUser(){
 
+  }
+
+  acceptRequest(f:FollowRequest)
+  {
+    console.log(f)
+    this.followRequestService.acceptRequest(f)
+    .subscribe(_=>this.findFollowRequests())
+  }
+
+  seeAllFollowers():boolean
+  {
+    this.showFollowers = true;
+    return this.showFollowers;
+  }
+
+  showFollowButton():boolean
+  {
+    if(Number(this.route.snapshot.params['id']) == Number(sessionStorage.getItem('id')))
+    {
+      return false;
+    }
+   return true;
+  }
 }
