@@ -66,7 +66,7 @@ public class ProfileService {
                 searched_profile.setInterests(p.getInterests());
                 searched_profile.setExperience(p.getExperience());
                 searched_profile.setEducation(p.getEducation());
-                searched_profile.setPrivate(true);
+                searched_profile.setPrivateProfile(true);
             }
         }
             return  searched_profile;
@@ -81,7 +81,7 @@ public class ProfileService {
         editProfile.setExperience(p.getExperience());
         editProfile.setSkills(p.getSkills());
         editProfile.setInterests(p.getInterests());
-        editProfile.setPrivate(p.isPrivate());
+        editProfile.setPrivateProfile(p.isPrivateProfile());
 
         return this.profileRepository.save(editProfile);
     }

@@ -99,24 +99,24 @@ public class InsertData {
         //Profile profile = new Profile(user,, edu, inter, skill, false);
         profileRepository.save(newProfile);
 
-       
-        User user3 = userRepository.getByUsername("laza");
 
-       
+        User user33 = userRepository.getByUsername("laza");
 
 
-        Profile newProfile3 = new Profile();
-        newProfile3.setId((long)3);
-        newProfile3.setEducation(list);
-        newProfile3.setExperience(list);
-        newProfile3.setInterests(list);
-        newProfile3.setSkills(list);
-        newProfile3.setPrivate(false);
-        newProfile3.setUser(user3);
+
+
+        Profile newProfile33 = new Profile();
+        newProfile33.setId((long)33);
+        newProfile33.setEducation(list);
+        newProfile33.setExperience(list);
+        newProfile33.setInterests(list);
+        newProfile33.setSkills(list);
+        newProfile33.setPrivateProfile(false);
+        newProfile33.setUser(user33);
+        profileRepository.save(newProfile33);
+
         profileRepository.save(newProfile3);
-
         profileRepository.save(newProfile2);
-        profileRepository.save(newProfile3);
 
         FollowRequest followRequest = new FollowRequest((long)1,"steva","pera",false);
         followRequestRepository.save(followRequest);

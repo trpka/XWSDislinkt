@@ -57,7 +57,7 @@ export class ProfileSearchComponent implements OnInit
     this.id = sessionStorage.getItem('id');
 
 
-    this.profileService.findAllPostsByOwnerId(2).subscribe((res: Post[]) => {
+    this.profileService.findAllPostsByOwnerId(this.profile.user.id).subscribe((res: Post[]) => {
       this.posts = res;
     });
   }  

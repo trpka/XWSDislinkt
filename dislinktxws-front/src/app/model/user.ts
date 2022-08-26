@@ -3,7 +3,7 @@ import { Post } from "./post.model";
 
 
 interface UserInterface{
-    id?:number;
+    id:number;
     firstName: string;
     lastName: string;
     email: string;
@@ -13,7 +13,7 @@ interface UserInterface{
     
 }
 export class User implements UserInterface{
-    id?:number;
+    id:number;
     firstName: string;
     lastName: string;
     email: string;

@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'users',component:AllUsersComponent},
   {path: 'registration',component: RegistrationComponent},
 
-  {path: 'profile/:id',component: UserProfileComponent}
+  {path: 'profile/:id',component: UserProfileComponent},
 
   {path: 'profile',component: UserProfileComponent},
   {path: 'profiles', component: ProfileComponent},
