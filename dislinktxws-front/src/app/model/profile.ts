@@ -13,7 +13,7 @@ interface ProfileInterface{
     
 }
 export class Profile implements ProfileInterface{
-    id?:number;
+    id:number;
     user: User;
     experience:string[];
     education:string[];
@@ -23,7 +23,7 @@ export class Profile implements ProfileInterface{
     
    
     constructor(obj:ProfileInterface){
-        this.id=obj.id;
+        this.id=1;
         this.user=obj.user;
         this.experience=obj.experience;
         this.education=obj.education;
