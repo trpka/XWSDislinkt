@@ -4,8 +4,13 @@ package com.example.DislinktXWS.controller;
 import com.example.DislinktXWS.DTO.NewFollowerDTO;
 import com.example.DislinktXWS.model.Post;
 import com.example.DislinktXWS.model.Profile;
+
 import com.example.DislinktXWS.repository.ProfileRepository;
+
+
+
 import com.example.DislinktXWS.service.PostService;
+
 import com.example.DislinktXWS.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,12 +63,23 @@ public class ProfileController {
         return new ResponseEntity<>(profile,HttpStatus.OK);
     }
 
+
+    //Pronalazenje Profila po korisnickom imenu iz Profila
+    @RequestMapping(value="api/find/{username}",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Profile> getByUsername(@PathVariable String username)
+    {
+        Profile profile=this.profileService.getByUsername(username);
+        return new ResponseEntity<>(profile,HttpStatus.OK);
+    }
+
     @RequestMapping(value="api/profile/posts/{id}",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<List<Post>> findAllPostsByOwnerId(@PathVariable Long id){
         List<Post> posts=this.postService.findAllPostsByOwnerId(id);
         return new ResponseEntity<>(posts,HttpStatus.OK);
     }
+
 
     @RequestMapping(value="api/profile/follower",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -79,4 +95,23 @@ public class ProfileController {
         String username = profile.getUser().getUsername();
         return new ResponseEntity<>(username,HttpStatus.OK);
     }
+
+    @PutMapping("api/edit")
+    public ResponseEntity<Profile> UpdateProfile(@RequestBody Profile p)
+    {
+        Profile profile = this.profileService.UpdateProfile(p);
+        return  new ResponseEntity<>(profile,HttpStatus.OK);
+    }
+
+    //Pronalazenje ID-ja Profila
+    @RequestMapping(value="api/id/{username}",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public Long FindNumber(@PathVariable String username)
+    {
+        Long number = this.profileService.FindNumber(username);
+        return number;
+    }
+
+
+
 }

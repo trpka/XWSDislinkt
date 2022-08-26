@@ -5,18 +5,47 @@
 <div class = "Profile">
     <form >
         <label for="firstName">First name :</label>
-        <p>{{user.firstName}}</p>
+         <!--<p>{{user.lastName}}</p>  -->
+
+        <div class="form-group text-center">
+            <input [(ngModel)]="user.firstName" id="name" name="name" type="text" class="from-control">
+          </div>
+
 
         <label for="lastName">Last name: </label>
-        <p>{{user.lastName}}</p>
+        <!--<p>{{user.lastName}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="user.lastName" id="lastName" name="lastName" type="text" class="from-control">
+          </div>
 
         <label for="email">Email: </label>
-        <p>{{user.email}}</p>
+        <!--<p>{{user.email}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="user.email" id="email" name="email" type="text" class="from-control">
+          </div>
 
         <label for="username">Username:</label>
-        <p>{{user.username}}</p>
+        <!--<p>{{user.username}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="user.username" id="username" name="username" type="text" class="from-control">
+          </div>
+
+
+          <label for="password">Password:</label>
+        <!--<p>{{user.username}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="user.password" id="password" name="password" type="text" class="from-control">
+          </div>
+
         
         <label for="dateOfBirth">Date of birth:</label>
-        <p>{{user.dateOfBirth}}</p>
+        <!--<p>{{user.dateOfBirth}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="user.dateOfBirth" id="dateOfBirth" name="dateOfBirth" type="text" class="from-control">
+          </div>
     </form>
+    <button class="btn btn-success" (click)="  UpdateUser()">UpdateUser</button>
 </div>
+
+
+

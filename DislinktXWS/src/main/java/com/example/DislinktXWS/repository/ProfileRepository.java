@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface ProfileRepository extends MongoRepository<Profile, Long> {
     Profile findByUserUsername(String username);
     Profile findProfileById(Long id);
-
+    Profile getById(Long id);
 }
