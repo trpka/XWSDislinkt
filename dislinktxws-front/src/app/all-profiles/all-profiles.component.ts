@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Profile } from '../model/profile';
 import { ProfileService } from '../service/profile.service';
 
@@ -14,7 +15,7 @@ export class AllProfilesComponent implements OnInit {
   id : number;
   username: string;
 
-  constructor(private profileService: ProfileService) 
+  constructor(private profileService: ProfileService,private router: Router) 
   {
       this.profiles = [];
   }
@@ -35,11 +36,19 @@ export class AllProfilesComponent implements OnInit {
     location.pathname = ('find/' + this.username);
   }
 
-  FindProfileByUsername()
+  /*FindProfileByUsername()
   {
     console.log(this.username)
     this.profileService.searchProfileByUsername(this.username)
     .subscribe(_=>this.userProfile())
+
+  }*/
+  FindProfileByUsername()
+  {
+    //console.log(this.username)
+    this.profileService.searchProfileByUsername(this.username)
+    .subscribe(res=>this.router.navigate(['/profile',res.id]))
+    
   }
 
 }

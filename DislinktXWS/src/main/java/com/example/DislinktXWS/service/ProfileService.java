@@ -5,9 +5,10 @@ import com.example.DislinktXWS.model.Profile;
 import com.example.DislinktXWS.repository.ProfileRepository;
 import com.example.DislinktXWS.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.DislinktXWS.model.User;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.ArrayList;
@@ -134,6 +135,18 @@ public class ProfileService {
 
         return profileRepository.save(followedProfile);
 
+    }
+
+    public Profile findByUsername1( String username){
+        List<Profile> allProfiles = this.profileRepository.findAll();
+
+        for (Profile p:allProfiles) {
+            if(p.getUser().getUsername().equals(username))
+            {
+                return p;
+            }
+        }
+        return null;
     }
 
 }

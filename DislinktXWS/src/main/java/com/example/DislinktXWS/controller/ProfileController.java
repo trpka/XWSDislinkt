@@ -112,6 +112,14 @@ public class ProfileController {
         return number;
     }
 
+    @RequestMapping(value="api/profile", method = RequestMethod.GET,
+            params = "username",
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Profile> findByUsername1(@RequestParam String username){
+        Profile profile = this.profileService.findByUsername1(username);
+        return new ResponseEntity<>(profile,HttpStatus.OK);
+    }
+
 
 
 }
