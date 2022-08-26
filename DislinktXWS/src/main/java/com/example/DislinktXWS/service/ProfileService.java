@@ -84,6 +84,21 @@ public class ProfileService {
 
         return this.profileRepository.save(editProfile);
     }
+    
+   public  Long FindNumber(String username)
+   {
+       List<Profile> all_profiles =  this.profileRepository.findAll();
+       Long number;
+
+       for(Profile p: all_profiles)
+       {
+           if(Objects.equals(p.getUser().getUsername(), username))
+           {
+               return number = p.getUser().getId();
+           }
+       }
+          return  null;
+   }
 
 
 

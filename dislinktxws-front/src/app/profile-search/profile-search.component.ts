@@ -16,6 +16,7 @@ export class ProfileSearchComponent implements OnInit
   profile:Profile;
   posts:Post[];
   username:string;
+  
 
   idFollower:any;
   idUser: number;
@@ -26,22 +27,27 @@ export class ProfileSearchComponent implements OnInit
   ngOnInit(): void 
   {
      this.loadProfile();
-     this.findProfileById();
-     this.findPosts();
+     //this.findProfileById();
+     //this.findPosts();
   }
 
   loadProfile()
   {
      this.username = this.route.snapshot.params['username'];
      this.profileService.searchProfileByUsername(this.username)
-     .subscribe(res => this.profile=res)
+    .subscribe(res => this.profile=res)
+
+    this.findPosts()
+
+
   }
 
   //Pretraga Profila Po ID-ju, zato sto ne mozemo kasnije, postove 
   //pronaci po username-u, mora ID
   findProfileById()
   {
-    this.id = sessionStorage.getItem('id');
+    //this.id = sessionStorage.getItem('id');
+    this.id = this.route.snapshot.params['id'];
     this.profileService.findProfileById(this.id)
     .subscribe(res=>this.profile=res)
   }
@@ -49,9 +55,18 @@ export class ProfileSearchComponent implements OnInit
   findPosts()
   {
     this.id = sessionStorage.getItem('id');
-    this.profileService.findAllPostsByOwnerId(this.id).subscribe((res: Post[]) => {
+
+
+    this.profileService.findAllPostsByOwnerId(2).subscribe((res: Post[]) => {
       this.posts = res;
     });
   }  
+
+  UpdateProfile()
+  {
+    this.profileService.UpdateProfile(this.profile)
+    .subscribe(res => this.profile=res)
+    window.location.reload()
+  }
 
 }

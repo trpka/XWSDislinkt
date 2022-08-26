@@ -2,41 +2,80 @@
 
 <div class = "Profile">
     <form >
-        <label for="id">Profile:</label>
-        <p>{{profile.id}}</p>
+     
         <label for="firstName">First name :</label>
-        <p>{{profile.user.firstName}}</p>
+       <!-- <p>{{profile.user.firstName}}</p> -->
+       <div class="form-group text-center">
+        <input [(ngModel)]="profile.user.firstName" id="name" name="name" type="text" class="from-control">
+      </div>
        <label for="lastName">Last name: </label>
-        <p>{{profile.user.lastName}}</p>
+      <!--<p>{{profile.user.lastName}}</p>-->  
+      <div class="form-group text-center">
+        <input [(ngModel)]="profile.user.lastName" id="lastName" name="lastName" type="text" class="from-control">
+      </div>
         <label for="email">Email: </label>
-        <p>{{profile.user.email}}</p>
+        <!--<p>{{profile.user.email}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="profile.user.email" id="email" name="email" type="text" class="from-control">
+          </div>
         <label for="username">Username:</label>
-        <p>{{profile.user.username}}</p>
+        <!--<p>{{profile.user.username}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="profile.user.username" id="username" name="username" type="text" class="from-control">
+          </div>
         <label for="dateOfBirth">Date of birth:</label>
-        <p>{{profile.user.dateOfBirth}}</p>
+        <!--<p>{{profile.user.dateOfBirth}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="profile.user.dateOfBirth" id="dateOfBirth" name="dateOfBirth" type="text" class="from-control">
+          </div>
+        
         <label for="experience">Experience </label>
         <ul>
-            <li ng-repeat="experience">{{profile.experience}}</li>
-        </ul>
+          <!--<li ng-repeat="education">{{profile.education}}</li> -->
+          <div class="form-group text-center">
+            <input [(ngModel)]="profile.experience" id="experience" name="experience" type="texts" class="from-control">
+          </div>
+           </ul>
+       
+      
+      
+           
+
+
         <label for="education">Education </label>
         <ul>
-            <li ng-repeat="education">{{profile.education}}</li>
-        </ul>
+           <!--<li ng-repeat="education">{{profile.education}}</li> -->
+           <div class="form-group text-center">
+             <input [(ngModel)]="profile.education" id="education" name="education" type="texts" class="from-control">
+           </div>
+            </ul>
         <label for="interests">Interests</label>
         <ul>
-            <li ng-repeat="interests">{{profile.interests}}</li>
+            <!--<li ng-repeat="interests">{{profile.interests}}</li>-->
+            <div class="form-group text-center">
+                <input [(ngModel)]="profile.interests" id="interests" name="interests" type="text" class="from-control">
+              </div>
         </ul>
         <label for="skills">Skills </label>
         <ul>
-            <li ng-repeat="skills">{{profile.skills}}</li>
+            <!--<li ng-repeat="skills">{{profile.skills}}</li> -->
+            <div class="form-group text-center">
+                <input [(ngModel)]="profile.skills" id="skills" name="skills" type="text" class="from-control">
+              </div>
         </ul>
         <label for="isPrivate">Profil is:</label>
-        <p>{{profile.isPrivate}}</p>
+        <!--<p>{{profile.isPrivate}}</p> -->
+        <div class="form-group text-center">
+            <input [(ngModel)]="profile.isPrivate" id="isPrivate" name="isPrivate" type="text" class="from-control">
+          </div>
         <br>
-       
-        
-    </form>
+       </form>
 </div>
+
+<button class="btn btn-success" (click)="  UpdateProfile()">UpdateProfile</button>
+
+
+
 
 <div class="container">
     <table class="table table-striped table-bordered">
