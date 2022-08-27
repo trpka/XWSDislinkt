@@ -119,13 +119,14 @@ public class ProfileService {
 
     public Profile followProfile(NewFollowerDTO newFollowerDTO) {
         Profile followedProfile = findById(newFollowerDTO.getIdProfileUser());
-        if(followedProfile.isPrivateProfile() == false)
-        {
+
+        if(followedProfile.isPrivateProfile() == false) {
             if (followedProfile.getFollowers() == null) {
                 List<Long> initList = new ArrayList<>();
                 initList.add(newFollowerDTO.getIdFollowerUser());
                 followedProfile.setFollowers(initList);
-            } else{
+            }
+            else {
                 followedProfile.getFollowers().add(newFollowerDTO.getIdFollowerUser());
             }
         }
@@ -133,10 +134,7 @@ public class ProfileService {
         {
             System.out.print("profile is private");
         }
-
-
         return profileRepository.save(followedProfile);
-
     }
 
     public Profile findByUsername1( String username){

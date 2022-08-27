@@ -32,7 +32,8 @@
         <p>{{numberOfFollowers}}</p>
         <!--<button class="btn btn-success" (click)="listOfFollowers()">See list of followers</button>-->
         <br>
-        <button class="btn btn-success" (click)="followProfile()" *ngIf="showFollowButton()">Follow</button>
+        <button class="btn btn-success" (click)="followProfile()" *ngIf="showFollowButton() && showFollowButtonForLoginUser">Follow</button>
+        <button class="btn btn-success" *ngIf="showSendRequestButtonForLoginUser">Follow request sent</button>
         <button class="btn btn-success" (click)="seeAllFollowers()">See all followers</button>
         
     </form>
@@ -53,7 +54,7 @@
     </table>
 </div>
 
-<div class="container" *ngIf="profile.privateProfile">
+<div class="container" *ngIf="profile.privateProfile && !showFollowButton()">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -69,7 +70,7 @@
     </table>
 </div>
 
-<div class="container" *ngIf="!profile.privateProfile">
+<div class="container" *ngIf="(!profile.privateProfile || !showFollowButton() || showPostsOnPrivateProfile()) ">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
