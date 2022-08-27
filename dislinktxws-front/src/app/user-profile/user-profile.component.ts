@@ -17,16 +17,24 @@ import { FollowRequest } from '../model/followRequest';
 export class UserProfileComponent implements OnInit {
   id:any;
   profile:Profile;
+  profile1:Profile;
   posts:Post[];
   newFollower: NewFollower;
   followRequest: FollowRequest;
   idProfile:number;
   id1:number;
+  id2:number;
+  id3:number;
+  id4:number;
   followRequests:FollowRequest[];
   followerUsername:string;
   numberOfFollowers: number;
   listOfFollowers1:User[];
+  listOfFollowers2:User[];
   showFollowers = false;
+  p = false;
+  showFollowButtonForLoginUser : boolean;
+  showSendRequestButtonForLoginUser = false;
  
   constructor(private route: ActivatedRoute, private profileService:ProfileService, 
   private followRequestService: FollowRequestService) { 
@@ -64,7 +72,7 @@ export class UserProfileComponent implements OnInit {
   
   ngOnInit(): void {
     this.loadProfile()
-    this.findProfiles()
+    this.findPosts()
     //this.findAll()
     this.findFollowRequests()
     this.listOfFollowers()
@@ -72,7 +80,7 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  findProfiles(){
+  findPosts(){
     this.id = this.route.snapshot.params['id'];
     this.profileService.findAllPostsByOwnerId(this.id).subscribe((res: Post[]) => {
       this.posts = res;
@@ -88,7 +96,11 @@ export class UserProfileComponent implements OnInit {
       for(var val of this.profile.followers)
       { 
         this.numberOfFollowers++;
+      };
+      if(this.profile.privateProfile == true){
+        this.showFollowButtonForLoginUser = true;
       }
+      
       
       
     })
@@ -109,7 +121,7 @@ export class UserProfileComponent implements OnInit {
       this.profileService.findProfileById(this.idProfile)
       .subscribe(res=>{this.followRequest.username=res.user.username;
         this.followRequestService.save(this.followRequest)
-        .subscribe()
+        .subscribe(res=>{this.showFollowButtonForLoginUser = false; this.showSendRequestButtonForLoginUser=true})
       });
     }
     
@@ -153,6 +165,14 @@ export class UserProfileComponent implements OnInit {
     return this.showFollowers;
   }
 
+  dontShowRequestPublicLogedUser()
+  {
+    this.id4 = Number(sessionStorage.getItem('id'))
+    this.profileService.findProfileById(this.id4)
+    .subscribe(res=>this.profile1=res)
+
+  }
+
   showFollowButton():boolean
   {
     if(Number(this.route.snapshot.params['id']) == Number(sessionStorage.getItem('id')))
@@ -160,5 +180,21 @@ export class UserProfileComponent implements OnInit {
       return false;
     }
    return true;
+  }
+
+  showPostsOnPrivateProfile():boolean
+  {
+    this.id3 = Number(sessionStorage.getItem('id'))
+    this.id2 = Number(this.route.snapshot.params['id']);
+    this.profileService.findAllFollowers(this.id2)
+    .subscribe(res=>{this.listOfFollowers2=res;
+      for(var val of this.listOfFollowers2)
+      { 
+        if(val.id == this.id3){
+            this.p = true;
+        }
+      }
+    })
+    return this.p;
   }
 }

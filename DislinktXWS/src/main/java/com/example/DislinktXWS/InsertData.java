@@ -132,8 +132,16 @@ public class InsertData {
 
         FollowRequest followRequest = new FollowRequest((long)1,"steva","pera",false);
         followRequestRepository.save(followRequest);
+        FollowRequest followRequest1 = new FollowRequest((long)2,"steva","jova",false);
+        followRequestRepository.save(followRequest1);
 
-        Post post1 = new  Post((long)6, (long)2, "lep post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post1.jpg");
+        Post post1 = new  Post((long)3, (long)2, "lep post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post1.jpg");
         postRepository.save(post1);
+
+        Post post2 = new  Post((long)1, (long)1, "pisem pisem", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post3.jpg");
+        postRepository.save(post2);
+
+        Post post3 = new  Post((long)2, (long)3, "napisan post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post2.png");
+        postRepository.save(post3);
     }
 }
