@@ -151,19 +151,17 @@ public class ProfileService {
 
 
     //Pretraga Profila Po Korisnickom imenu i Lozinki
-    public Profile findByUserAndPass(String username, String pass)
-    {
+    public Profile findByUserAndPass(String username, String pass) {
         List<Profile> all_profiles = this.profileRepository.findAll();
 
-        for(Profile p: all_profiles)
-        {
-            if(Objects.equals(p.getUser().getUsername(), username) && Objects.equals(p.getUser().getPassword(), pass))
-            {
-                return  p;
+        for (Profile p : all_profiles) {
+            if (Objects.equals(p.getUser().getUsername(), username) && Objects.equals(p.getUser().getPassword(), pass)) {
+                return p;
             }
         }
 
-        return  null;
+        return null;
+    }
 
     public List<User> findAllFollowers( Long idUser){
         Profile profile = profileRepository.findProfileById(idUser);
@@ -171,9 +169,9 @@ public class ProfileService {
         List<User> users = userRepository.findAll();
         List<User> findUsers = new ArrayList<>();
 
-        for (Long f:followers) {
-            for (User u:users) {
-                if(u.getId().equals(f))
+        for (Long f : followers) {
+            for (User u : users) {
+                if (u.getId().equals(f))
                     findUsers.add(u);
             }
         }

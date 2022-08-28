@@ -8,8 +8,6 @@ import { ProfileService } from '../service/profile.service';
 import { User } from '../model/user';
 import { FollowRequestService } from '../service/follow-request.service';
 import { FollowRequest } from '../model/followRequest';
-import { AuthenticationService } from '../service/authentication.service';
-
 import { PostService } from '../service/post.service';
 
 @Component({
@@ -31,16 +29,6 @@ export class UserProfileComponent implements OnInit {
   id4:number;
   followRequests:FollowRequest[];
   followerUsername:string;
-
-  update_profile: Profile;
-  profiles: Profile[];
-  user: User;
-  logged_username: string;
-  logged_profile: boolean;
- 
-  constructor(private route: ActivatedRoute, private profileService:ProfileService, 
-  private followRequestService: FollowRequestService, private authService: AuthenticationService) { 
-
   numberOfFollowers: number;
   listOfFollowers1:User[];
   listOfFollowers2:User[];
@@ -56,7 +44,6 @@ export class UserProfileComponent implements OnInit {
  
   constructor(private route: ActivatedRoute, private profileService:ProfileService, 
   private followRequestService: FollowRequestService, private postService : PostService, private router: Router) { 
-
     this.newFollower = new NewFollower({
       idProfileUser : 0,
       idFollowerUser : 0
@@ -98,12 +85,6 @@ export class UserProfileComponent implements OnInit {
     this.showFollowButton()
   }
 
-  //Izmena Podataka za Korisnika
-  UpdateProfile()
-  {
-    window.location.reload()
-    
-  }
 
   findPosts(){
     this.id = this.route.snapshot.params['id'];
@@ -115,8 +96,6 @@ export class UserProfileComponent implements OnInit {
 
 
   loadProfile(){
-    this.authService.isUserLoggedIn
-   // this.logged_profile = false;
     this.id = this.route.snapshot.params['id'];
     this.profileService.findProfileById(this.id)
     .subscribe(res=>{this.profile=res;
@@ -131,8 +110,6 @@ export class UserProfileComponent implements OnInit {
       
       
     })
-
-
   }
 
   followProfile(){
