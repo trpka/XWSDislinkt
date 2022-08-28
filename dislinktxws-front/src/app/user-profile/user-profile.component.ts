@@ -8,6 +8,7 @@ import { ProfileService } from '../service/profile.service';
 import { User } from '../model/user';
 import { FollowRequestService } from '../service/follow-request.service';
 import { FollowRequest } from '../model/followRequest';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -23,9 +24,14 @@ export class UserProfileComponent implements OnInit {
   idProfile:number;
   followRequests:FollowRequest[];
   followerUsername:string;
+  update_profile: Profile;
+  profiles: Profile[];
+  user: User;
+  logged_username: string;
+  logged_profile: boolean;
  
   constructor(private route: ActivatedRoute, private profileService:ProfileService, 
-  private followRequestService: FollowRequestService) { 
+  private followRequestService: FollowRequestService, private authService: AuthenticationService) { 
     this.newFollower = new NewFollower({
       idProfileUser : 0,
       idFollowerUser : 0
@@ -64,6 +70,12 @@ export class UserProfileComponent implements OnInit {
    
   }
 
+  //Izmena Podataka za Korisnika
+  UpdateProfile()
+  {
+    window.location.reload()
+    
+  }
 
   findProfiles(){
     this.id = this.route.snapshot.params['id'];
@@ -75,12 +87,16 @@ export class UserProfileComponent implements OnInit {
 
 
   loadProfile(){
+    this.authService.isUserLoggedIn
+   // this.logged_profile = false;
     this.id = this.route.snapshot.params['id'];
     this.profileService.findProfileById(this.id)
     .subscribe(res=>{this.profile=res;  
       console.log(this.profile.user.username);
       console.log(this.profile.privateProfile)
     })
+
+
   }
 
   followProfile(){

@@ -37,7 +37,7 @@ export class ProfileService {
     return this.http.post<Profile>(this.url+"/follower",newFollower);
   }
 
-   /*searchProfileByUsername(username:string):Observable<Profile>
+   /*searchProfileByUsernameAndPass(username:string):Observable<Profile>
    {
       return this.http.get<Profile>(`${this.url3}/${username}`)
    }*/
