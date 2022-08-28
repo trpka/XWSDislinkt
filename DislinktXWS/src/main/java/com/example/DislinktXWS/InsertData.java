@@ -82,7 +82,7 @@ public class InsertData {
         newProfile.setFollowers(li1);
 
         List<Long> lis2 = new ArrayList<>();
-        lis2.add((long)1);
+        //lis2.add((long)1);
         lis2.add((long)3);
 
         Profile newProfile2 = new Profile();
@@ -135,13 +135,16 @@ public class InsertData {
         FollowRequest followRequest1 = new FollowRequest((long)2,"steva","jova",false);
         followRequestRepository.save(followRequest1);
 
-        Post post1 = new  Post((long)3, (long)2, "lep post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post1.jpg");
+        Post post1 = new  Post((long)3, (long)2, "lep post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post1.jpg", (long)0,(long)0 );
         postRepository.save(post1);
 
-        Post post2 = new  Post((long)1, (long)1, "pisem pisem", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post3.jpg");
+        Post post2 = new  Post((long)1, (long)1, "pisem pisem", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post3.jpg",(long)0,(long)0);
         postRepository.save(post2);
 
-        Post post3 = new  Post((long)2, (long)3, "napisan post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post2.png");
+        Post post3 = new  Post((long)2, (long)3, "napisan post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post2.png",(long)0, (long)0);
         postRepository.save(post3);
+
+        Post post4 = new  Post((long)4, (long)1, "jedan post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post2.png",(long)0, (long)0);
+        postRepository.save(post4);
     }
 }

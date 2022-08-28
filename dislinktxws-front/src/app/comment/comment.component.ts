@@ -39,12 +39,14 @@ export class CommentComponent implements OnInit {
           text:"",
           userIdWhoLikes:[],
           userIdWhoDislikes:[],
-          comments:[]
+          comments:[],
+          numberOfLikes:0,
+          numberOfDislikes: 0
         }),
       comment:new Comment(
         {
           id:0,
-          userId:"",
+          userId:0,
           content:"",
         })
     })
@@ -53,10 +55,10 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.reloadData();
-    this.loadPost();
+    this.loadComments();
   }
 
-  loadPost() {
+  loadComments() {
     this.idPost = this.route.snapshot.params['idPost'];
     this.postService.findPostById(this.idPost)
     .subscribe(res=>this.post=res)
@@ -69,7 +71,9 @@ export class CommentComponent implements OnInit {
   }
 
   saveComment(){
+    
     this.newCommentForPost.post=this.post;
+    this.newCommentForPost.comment.userId = Number(sessionStorage.getItem('id'))
     this.commentService.save(this.newCommentForPost)
     .subscribe(_=>this.reloadData)
   }

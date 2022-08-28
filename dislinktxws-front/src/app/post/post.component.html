@@ -1,22 +1,16 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 <div class = "post-input">
     <form >
-        <label for="ownerId">Owner ID :</label><br/>
-        <input name="ownerId" id="ownerId" type="text" [(ngModel)]="postToAdd.ownerId"><br/>
+        <!--<label for="ownerId">Owner ID :</label><br/>
+        <input name="ownerId" id="ownerId" type="text" [(ngModel)]="postToAdd.ownerId"><br/>-->
         <label for="text">Text:</label><br/>
         <input id="text" name="text" [(ngModel)]="postToAdd.text"><br/>
-        <button>
-            <i class="fas fa-thumbs-up"></i> Like
-          </button>
-          
-          <button>
-            <i class="fas fa-thumbs-down"></i> Dislike
-          </button>
-          
-          <button>
-            <i class="fas fa-share"></i> Share
-          </button>
+        <br>
+        <label>Picture:</label>
+          <input id="image" type="file" (change)="onFileChanged($event)">
+          <button id="upload_button" class="btn btn-success" (click)="onUpload()">Upload</button>
         
+        <button class="btn btn-success" (click)="backToProfile()">Back to profile</button>
         <button class="btn btn-success" (click)="savePost()">save</button>
     </form>
 </div>

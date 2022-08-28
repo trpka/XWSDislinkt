@@ -2,6 +2,7 @@ package com.example.DislinktXWS.controller;
 
 import com.example.DislinktXWS.model.Comment;
 import com.example.DislinktXWS.model.Post;
+import com.example.DislinktXWS.repository.PostRepository;
 import com.example.DislinktXWS.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,8 @@ public class PostController {
 
     @Autowired
     private PostService postService;
+    @Autowired
+    private PostRepository postRepository;
 
     @RequestMapping(value="api/post",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -48,6 +51,26 @@ public class PostController {
     public ResponseEntity<Post> getById(@PathVariable Long id){
         Post post=this.postService.findById(id);
         return new ResponseEntity<>(post,HttpStatus.OK);
+    }
+
+    @RequestMapping(value="api/post/likePost",method = RequestMethod.POST,
+            consumes= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Post> likePost(@RequestBody Post post){
+        Long numberLikes = post.getNumberOfLikes();
+        numberLikes++;
+        post.setNumberOfLikes(numberLikes);
+        Post likedPost=this.postRepository.save(post);
+        return new ResponseEntity<>(likedPost, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value="api/post/dislikePost",method = RequestMethod.POST,
+            consumes= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Post> dislikePost(@RequestBody Post post){
+        Long numberDislikes = post.getNumberOfDislikes();
+        numberDislikes++;
+        post.setNumberOfDislikes(numberDislikes);
+        Post dislikedPost=this.postRepository.save(post);
+        return new ResponseEntity<>(dislikedPost, HttpStatus.CREATED);
     }
 
 
