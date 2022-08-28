@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../model/post.model';
 import { NewFollower} from '../model/newFollower';
 import { Profile } from '../model/profile';
@@ -10,6 +10,8 @@ import { FollowRequestService } from '../service/follow-request.service';
 import { FollowRequest } from '../model/followRequest';
 import { AuthenticationService } from '../service/authentication.service';
 
+import { PostService } from '../service/post.service';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -18,12 +20,18 @@ import { AuthenticationService } from '../service/authentication.service';
 export class UserProfileComponent implements OnInit {
   id:any;
   profile:Profile;
+  profile1:Profile;
   posts:Post[];
   newFollower: NewFollower;
   followRequest: FollowRequest;
   idProfile:number;
+  id1:number;
+  id2:number;
+  id3:number;
+  id4:number;
   followRequests:FollowRequest[];
   followerUsername:string;
+
   update_profile: Profile;
   profiles: Profile[];
   user: User;
@@ -32,6 +40,23 @@ export class UserProfileComponent implements OnInit {
  
   constructor(private route: ActivatedRoute, private profileService:ProfileService, 
   private followRequestService: FollowRequestService, private authService: AuthenticationService) { 
+
+  numberOfFollowers: number;
+  listOfFollowers1:User[];
+  listOfFollowers2:User[];
+  showFollowers = false;
+  p = false;
+  showFollowButtonForLoginUser : boolean;
+  showSendRequestButtonForLoginUser = false;
+  profileWhoLikedPost:number;
+  profileWhoDislikedPost:number;
+  //profileWhichPostWasLiked: number;
+  //idPost:number;
+  
+ 
+  constructor(private route: ActivatedRoute, private profileService:ProfileService, 
+  private followRequestService: FollowRequestService, private postService : PostService, private router: Router) { 
+
     this.newFollower = new NewFollower({
       idProfileUser : 0,
       idFollowerUser : 0
@@ -51,7 +76,8 @@ export class UserProfileComponent implements OnInit {
       education:[],
       interests:[],
       skills:[],
-      privateProfile: true
+      privateProfile: true,
+      followers : []
     }),
     this.followRequest = new FollowRequest({
       username:"",
@@ -59,15 +85,17 @@ export class UserProfileComponent implements OnInit {
       followRequest:false
     })
     this.followRequests=[];
+    this.numberOfFollowers = 0;
   }
   
   
   ngOnInit(): void {
     this.loadProfile()
-    this.findProfiles()
+    this.findPosts()
     //this.findAll()
     this.findFollowRequests()
-   
+    this.listOfFollowers()
+    this.showFollowButton()
   }
 
   //Izmena Podataka za Korisnika
@@ -77,7 +105,7 @@ export class UserProfileComponent implements OnInit {
     
   }
 
-  findProfiles(){
+  findPosts(){
     this.id = this.route.snapshot.params['id'];
     this.profileService.findAllPostsByOwnerId(this.id).subscribe((res: Post[]) => {
       this.posts = res;
@@ -91,9 +119,17 @@ export class UserProfileComponent implements OnInit {
    // this.logged_profile = false;
     this.id = this.route.snapshot.params['id'];
     this.profileService.findProfileById(this.id)
-    .subscribe(res=>{this.profile=res;  
-      console.log(this.profile.user.username);
-      console.log(this.profile.privateProfile)
+    .subscribe(res=>{this.profile=res;
+      for(var val of this.profile.followers)
+      { 
+        this.numberOfFollowers++;
+      };
+      if(this.profile.privateProfile == true){
+        this.showFollowButtonForLoginUser = true;
+      }
+      
+      
+      
     })
 
 
@@ -114,7 +150,7 @@ export class UserProfileComponent implements OnInit {
       this.profileService.findProfileById(this.idProfile)
       .subscribe(res=>{this.followRequest.username=res.user.username;
         this.followRequestService.save(this.followRequest)
-        .subscribe()
+        .subscribe(res=>{this.showFollowButtonForLoginUser = false; this.showSendRequestButtonForLoginUser=true})
       });
     }
     
@@ -130,10 +166,88 @@ export class UserProfileComponent implements OnInit {
     this.followRequestService.findAllFollowRequestsByFollowerUsername(this.followerUsername)
     .subscribe(res=>this.followRequests=res);
     //.subscribe((res: FollowRequest[]) => {this.followRequests = res; });
-   
-    
-   
+  }
+
+  listOfFollowers()
+  {
+    this.id1 = this.route.snapshot.params['id'];
+    this.profileService.findAllFollowers(this.id1)
+    .subscribe(res=>{this.listOfFollowers1=res;
+      console.log(res)
+    })
   }
   
+  blockUser(){
 
+  }
+
+  acceptRequest(f:FollowRequest)
+  {
+    console.log(f)
+    this.followRequestService.acceptRequest(f)
+    .subscribe(_=>this.findFollowRequests())
+  }
+
+  seeAllFollowers():boolean
+  {
+    this.showFollowers = true;
+    return this.showFollowers;
+  }
+
+  dontShowRequestPublicLogedUser()
+  {
+    this.id4 = Number(sessionStorage.getItem('id'))
+    this.profileService.findProfileById(this.id4)
+    .subscribe(res=>this.profile1=res)
+
+  }
+
+  showFollowButton():boolean
+  {
+    if(Number(this.route.snapshot.params['id']) == Number(sessionStorage.getItem('id')))
+    {
+      return false;
+    }
+   return true;
+  }
+
+  showPostsOnPrivateProfile():boolean
+  {
+    this.id3 = Number(sessionStorage.getItem('id'))
+    this.id2 = Number(this.route.snapshot.params['id']);
+    this.profileService.findAllFollowers(this.id2)
+    .subscribe(res=>{this.listOfFollowers2=res;
+      for(var val of this.listOfFollowers2)
+      { 
+        if(val.id == this.id3){
+            this.p = true;
+        }
+      }
+    })
+    return this.p;
+  }
+
+  likePost(post:Post){
+    this.profileWhoLikedPost = Number(sessionStorage.getItem('id'))
+    post.userIdWhoLikes.push(this.profileWhoLikedPost)
+    this.postService.likePost(post)
+    .subscribe(_=>this.findPosts())
+    
+  }
+
+  dislikePost(post:Post){
+    this.profileWhoDislikedPost = Number(sessionStorage.getItem('id'))
+    post.userIdWhoDislikes.push(this.profileWhoDislikedPost)
+    this.postService.dislikePost(post)
+    .subscribe(_=>this.findPosts())
+  }
+
+  createPostPage()
+  {
+    this.router.navigate(['/post']);
+  }
+
+  addComent(idPost:any){
+    this.router.navigate(['/post', idPost]);
+  }
 }

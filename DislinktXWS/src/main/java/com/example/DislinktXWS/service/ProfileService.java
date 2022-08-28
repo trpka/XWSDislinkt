@@ -5,9 +5,11 @@ import com.example.DislinktXWS.model.Profile;
 import com.example.DislinktXWS.repository.ProfileRepository;
 import com.example.DislinktXWS.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.DislinktXWS.model.User;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -117,13 +119,14 @@ public class ProfileService {
 
     public Profile followProfile(NewFollowerDTO newFollowerDTO) {
         Profile followedProfile = findById(newFollowerDTO.getIdProfileUser());
-        if(followedProfile.isPrivateProfile() == false)
-        {
+
+        if(followedProfile.isPrivateProfile() == false) {
             if (followedProfile.getFollowers() == null) {
                 List<Long> initList = new ArrayList<>();
                 initList.add(newFollowerDTO.getIdFollowerUser());
                 followedProfile.setFollowers(initList);
-            } else{
+            }
+            else {
                 followedProfile.getFollowers().add(newFollowerDTO.getIdFollowerUser());
             }
         }
@@ -131,10 +134,7 @@ public class ProfileService {
         {
             System.out.print("profile is private");
         }
-
-
         return profileRepository.save(followedProfile);
-
     }
 
     public Profile findByUsername1( String username){
@@ -148,6 +148,7 @@ public class ProfileService {
         }
         return null;
     }
+
 
     //Pretraga Profila Po Korisnickom imenu i Lozinki
     public Profile findByUserAndPass(String username, String pass)
@@ -163,6 +164,20 @@ public class ProfileService {
         }
 
         return  null;
+
+    public List<User> findAllFollowers( Long idUser){
+        Profile profile = profileRepository.findProfileById(idUser);
+        List<Long> followers = profile.getFollowers();
+        List<User> users = userRepository.findAll();
+        List<User> findUsers = new ArrayList<>();
+
+        for (Long f:followers) {
+            for (User u:users) {
+                if(u.getId().equals(f))
+                    findUsers.add(u);
+            }
+        }
+        return findUsers;
 
     }
 

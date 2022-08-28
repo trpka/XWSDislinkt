@@ -1,7 +1,7 @@
 button {
-    font-size: 1.5em;
-    margin: 5px;
-  }
+  font-size: 1.5em;
+  margin: 5px;
+}
 
 .post-input {
     margin: auto;
@@ -18,4 +18,9 @@ button {
 #text{
     margin: auto;
     display: block;
+}
+
+#image{
+  margin: auto;
+  display: block;
 }

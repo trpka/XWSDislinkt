@@ -79,7 +79,11 @@ public class InsertData {
         newProfile.setSkills(list);
         newProfile.setPrivateProfile(false);
         newProfile.setUser(user);
+        newProfile.setFollowers(li1);
 
+        List<Long> lis2 = new ArrayList<>();
+        //lis2.add((long)1);
+        lis2.add((long)3);
 
         Profile newProfile2 = new Profile();
         newProfile2.setId((long)2);
@@ -89,6 +93,7 @@ public class InsertData {
         newProfile2.setSkills(list);
         newProfile2.setPrivateProfile(false);
         newProfile2.setUser(user2);
+        newProfile2.setFollowers(lis2);
 
 
         Profile newProfile3 = new Profile();
@@ -99,6 +104,7 @@ public class InsertData {
         newProfile3.setSkills(list);
         newProfile3.setPrivateProfile(true);
         newProfile3.setUser(user3);
+        newProfile3.setFollowers(li1);
 
         //Profile profile = new Profile(user,, edu, inter, skill, false);
         profileRepository.save(newProfile);
@@ -118,6 +124,7 @@ public class InsertData {
         newProfile33.setSkills(list);
         newProfile33.setPrivateProfile(false);
         newProfile33.setUser(user33);
+        newProfile33.setFollowers(li1);
         profileRepository.save(newProfile33);
 
         profileRepository.save(newProfile3);
@@ -125,5 +132,19 @@ public class InsertData {
 
         FollowRequest followRequest = new FollowRequest((long)1,"steva","pera",false);
         followRequestRepository.save(followRequest);
+        FollowRequest followRequest1 = new FollowRequest((long)2,"steva","jova",false);
+        followRequestRepository.save(followRequest1);
+
+        Post post1 = new  Post((long)3, (long)2, "lep post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post1.jpg", (long)0,(long)0 );
+        postRepository.save(post1);
+
+        Post post2 = new  Post((long)1, (long)1, "pisem pisem", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post3.jpg",(long)0,(long)0);
+        postRepository.save(post2);
+
+        Post post3 = new  Post((long)2, (long)3, "napisan post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post2.png",(long)0, (long)0);
+        postRepository.save(post3);
+
+        Post post4 = new  Post((long)4, (long)1, "jedan post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post2.png",(long)0, (long)0);
+        postRepository.save(post4);
     }
 }
