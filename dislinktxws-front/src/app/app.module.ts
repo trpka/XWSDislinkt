@@ -23,6 +23,7 @@ import { AllUsersComponent } from './all-users/all-users.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AllProfilesComponent } from './all-profiles/all-profiles.component';
 import { ProfileSearchComponent } from './profile-search/profile-search.component';
+import { FindProfileForUpdatedComponent } from './find-profile-for-updated/find-profile-for-updated.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ProfileSearchComponent } from './profile-search/profile-search.componen
     AllUsersComponent,
     UserProfileComponent,
     AllProfilesComponent,
-    ProfileSearchComponent
+    ProfileSearchComponent,
+    FindProfileForUpdatedComponent,
 
 
   ],

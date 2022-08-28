@@ -44,7 +44,7 @@ export class ProfileService {
     return this.http.post<Profile>(this.url+"/follower",newFollower);
   }
 
-   /*searchProfileByUsername(username:string):Observable<Profile>
+   /*searchProfileByUsernameAndPass(username:string):Observable<Profile>
    {
       return this.http.get<Profile>(`${this.url3}/${username}`)
    }*/
@@ -53,6 +53,16 @@ export class ProfileService {
    {
     const params:HttpParams=new HttpParams().append('username',username);
     return this.http.get<Profile>(this.url,{params});
+      
+   }
+
+   searchProfileByUsernameAndPass(username:string, password: string):Observable<Profile>
+   {
+      const params:HttpParams=new HttpParams().append(username, password);
+      //const params1:HttpParams=new HttpParams().append('password',password);
+
+
+     return this.http.get<Profile>(this.url,{params});
       
    }
 

@@ -15,6 +15,7 @@ export class LoginPageComponent implements OnInit {
   invalidLogin = false;
   error:string='';
   idLoginUser:any;
+  loggedUser: Boolean;
   @Output()
   LogIn: EventEmitter<void> = new EventEmitter();
   constructor(private router: Router,
@@ -45,4 +46,8 @@ export class LoginPageComponent implements OnInit {
         })
     }
   }
+
+  
+
+
 }

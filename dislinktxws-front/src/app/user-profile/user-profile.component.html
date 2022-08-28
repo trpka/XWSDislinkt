@@ -32,9 +32,15 @@
         <p>{{numberOfFollowers}}</p>
         <!--<button class="btn btn-success" (click)="listOfFollowers()">See list of followers</button>-->
         <br>
+
+       
+
+       
+
         <button class="btn btn-success" (click)="followProfile()" *ngIf="showFollowButton() && showFollowButtonForLoginUser">Follow</button>
         <button class="btn btn-success" *ngIf="showSendRequestButtonForLoginUser">Follow request sent</button>
         <button class="btn btn-success" (click)="seeAllFollowers()">See all followers</button>
+
         
     </form>
 </div>
@@ -70,12 +76,14 @@
     </table>
 </div>
 
+
 <div class="container" *ngIf="!showFollowButton()">
     <label>Create post</label>
     <button class="btn btn-success" (click)="createPostPage()">Create</button>
 </div>
 
 <div class="container" *ngIf="(!profile.privateProfile || !showFollowButton() || showPostsOnPrivateProfile()) ">
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>

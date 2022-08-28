@@ -121,11 +121,27 @@ public class ProfileController {
         return new ResponseEntity<>(profile,HttpStatus.OK);
     }
 
+
+
+    //Pretraga i po imenu i po profilu
+    @RequestMapping(value="api/profile", method = RequestMethod.GET,
+            params = "username" + "password",
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Profile> findByUsername1(@RequestParam String username, String password){
+        Profile profile = this.profileService.findByUserAndPass(username,password);
+        return new ResponseEntity<>(profile,HttpStatus.OK);
+    }
+
+
+
+
+
     @RequestMapping(value="api/profile/allFollowers/{idUser}",method = RequestMethod.GET,produces = {
             MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<List<User>> findAllFollowers(@PathVariable Long idUser){
         List<User> users=this.profileService.findAllFollowers(idUser);
         return new ResponseEntity<>(users,HttpStatus.OK);
     }
+
 
 }
