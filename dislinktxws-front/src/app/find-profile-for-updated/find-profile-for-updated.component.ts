@@ -13,6 +13,7 @@ export class FindProfileForUpdatedComponent implements OnInit {
   profile: Profile[];
   id: number; 
   username: string;
+  password: string;
 
 
   constructor(private profileService: ProfileService, private router: Router) { }
@@ -31,5 +32,7 @@ export class FindProfileForUpdatedComponent implements OnInit {
     this.profileService.searchProfileByUsername(this.username)
     .subscribe(_=> this.UserProfileForUpdate())
   }
+
+ 
 
 }

@@ -49,6 +49,16 @@ export class ProfileService {
       
    }
 
+   searchProfileByUsernameAndPass(username:string, password: string):Observable<Profile>
+   {
+      const params:HttpParams=new HttpParams().append(username, password);
+      //const params1:HttpParams=new HttpParams().append('password',password);
+
+
+     return this.http.get<Profile>(this.url,{params});
+      
+   }
+
    UpdateProfile(profile:Profile):Observable<Profile>
    {
     return this.http.put<Profile>(this.url4,profile);

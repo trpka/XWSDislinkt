@@ -149,4 +149,21 @@ public class ProfileService {
         return null;
     }
 
+    //Pretraga Profila Po Korisnickom imenu i Lozinki
+    public Profile findByUserAndPass(String username, String pass)
+    {
+        List<Profile> all_profiles = this.profileRepository.findAll();
+
+        for(Profile p: all_profiles)
+        {
+            if(Objects.equals(p.getUser().getUsername(), username) && Objects.equals(p.getUser().getPassword(), pass))
+            {
+                return  p;
+            }
+        }
+
+        return  null;
+
+    }
+
 }

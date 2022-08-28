@@ -1,4 +1,5 @@
-<p>profile-search works!</p>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <div class = "Profile">
     <form >
@@ -7,7 +8,8 @@
        <!-- <p>{{profile.user.firstName}}</p> -->
        <div class="form-group text-center">
         <input [(ngModel)]="profile.user.firstName" id="name" name="name" type="text" class="from-control">
-      </div>
+      </div> 
+
        <label for="lastName">Last name: </label>
       <!--<p>{{profile.user.lastName}}</p>-->  
       <div class="form-group text-center">
@@ -30,15 +32,24 @@
           </div>
         
         <label for="experience">Experience </label>
-        <ul>
+        
           <!--<li ng-repeat="education">{{profile.education}}</li> -->
-          <div class="form-group text-center">
-            <input [(ngModel)]="profile.experience" id="experience" name="experience" type="texts" class="from-control">
-          </div>
-           </ul>
+          
+
+          <div ng-app="">
+
+            
+            <input [(ngModel)]="profile.experience" id="experience" name="experience"  ng-list/>
+            
+            
+            <pre>{{profile.experience}}</pre>
+            
+            </div>
+        
+          
        
       
-      
+          
            
 
 
@@ -74,6 +85,7 @@
 
 <button class="btn btn-success" (click)="  UpdateProfile()">UpdateProfile</button>
 
+</html>
 
 
 

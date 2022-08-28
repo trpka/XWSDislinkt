@@ -16,10 +16,14 @@ export class ProfileSearchComponent implements OnInit
   profile:Profile;
   posts:Post[];
   username:string;
+  password: string;
   
 
   idFollower:any;
   idUser: number;
+
+  experiences=['jedan','dva','tri','cetiri'];
+
   
   
   constructor(private route: ActivatedRoute, private profileService:ProfileService) { }
@@ -34,23 +38,18 @@ export class ProfileSearchComponent implements OnInit
   loadProfile()
   {
      this.username = this.route.snapshot.params['username'];
-     this.profileService.searchProfileByUsername(this.username)
+     this.password = this.route.snapshot.params['password'];
+    
+    this.profileService.searchProfileByUsername(this.username)
     .subscribe(res => this.profile=res)
+   
 
     this.findPosts()
 
 
   }
 
-  //Pretraga Profila Po ID-ju, zato sto ne mozemo kasnije, postove 
-  //pronaci po username-u, mora ID
-  findProfileById()
-  {
-    //this.id = sessionStorage.getItem('id');
-    this.id = this.route.snapshot.params['id'];
-    this.profileService.findProfileById(this.id)
-    .subscribe(res=>this.profile=res)
-  }
+  
 
   findPosts()
   {

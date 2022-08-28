@@ -121,5 +121,18 @@ public class ProfileController {
     }
 
 
+    //Pretraga i po imenu i po profilu
+    @RequestMapping(value="api/profile", method = RequestMethod.GET,
+            params = "username" + "password",
+            produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Profile> findByUsername1(@RequestParam String username, String password){
+        Profile profile = this.profileService.findByUserAndPass(username,password);
+        return new ResponseEntity<>(profile,HttpStatus.OK);
+    }
+
+
+
+
+
 
 }
