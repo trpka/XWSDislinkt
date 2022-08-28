@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../model/post.model';
 import { NewFollower} from '../model/newFollower';
 import { Profile } from '../model/profile';
@@ -8,6 +8,7 @@ import { ProfileService } from '../service/profile.service';
 import { User } from '../model/user';
 import { FollowRequestService } from '../service/follow-request.service';
 import { FollowRequest } from '../model/followRequest';
+import { PostService } from '../service/post.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -35,9 +36,14 @@ export class UserProfileComponent implements OnInit {
   p = false;
   showFollowButtonForLoginUser : boolean;
   showSendRequestButtonForLoginUser = false;
+  profileWhoLikedPost:number;
+  profileWhoDislikedPost:number;
+  //profileWhichPostWasLiked: number;
+  //idPost:number;
+  
  
   constructor(private route: ActivatedRoute, private profileService:ProfileService, 
-  private followRequestService: FollowRequestService) { 
+  private followRequestService: FollowRequestService, private postService : PostService, private router: Router) { 
     this.newFollower = new NewFollower({
       idProfileUser : 0,
       idFollowerUser : 0
@@ -196,5 +202,29 @@ export class UserProfileComponent implements OnInit {
       }
     })
     return this.p;
+  }
+
+  likePost(post:Post){
+    this.profileWhoLikedPost = Number(sessionStorage.getItem('id'))
+    post.userIdWhoLikes.push(this.profileWhoLikedPost)
+    this.postService.likePost(post)
+    .subscribe(_=>this.findPosts())
+    
+  }
+
+  dislikePost(post:Post){
+    this.profileWhoDislikedPost = Number(sessionStorage.getItem('id'))
+    post.userIdWhoDislikes.push(this.profileWhoDislikedPost)
+    this.postService.dislikePost(post)
+    .subscribe(_=>this.findPosts())
+  }
+
+  createPostPage()
+  {
+    this.router.navigate(['/post']);
+  }
+
+  addComent(idPost:any){
+    this.router.navigate(['/post', idPost]);
   }
 }

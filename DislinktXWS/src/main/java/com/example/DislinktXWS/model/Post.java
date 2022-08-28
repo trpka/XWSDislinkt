@@ -21,6 +21,8 @@ public class Post {
     private List<Long> userIdWhoDislikes;
     private List<Comment> comments;
     private String picture;
+    private Long numberOfLikes;
+    private Long numberOfDislikes;
 
     public Long getId() {
         return id;
@@ -78,7 +80,31 @@ public class Post {
         this.picture = picture;
     }
 
-    public Post(Long id, Long ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments, String picture) {
+    public List<Long> getUserIdWhoLikes() {
+        return userIdWhoLikes;
+    }
+
+    public void setUserIdWhoLikes(List<Long> userIdWhoLikes) {
+        this.userIdWhoLikes = userIdWhoLikes;
+    }
+
+    public Long getNumberOfLikes() {
+        return numberOfLikes;
+    }
+
+    public void setNumberOfLikes(Long numberOfLikes) {
+        this.numberOfLikes = numberOfLikes;
+    }
+
+    public Long getNumberOfDislikes() {
+        return numberOfDislikes;
+    }
+
+    public void setNumberOfDislikes(Long numberOfDislikes) {
+        this.numberOfDislikes = numberOfDislikes;
+    }
+
+    public Post(Long id, Long ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments, String picture, Long numberOfLikes, Long numberOfDislikes) {
         this.id = id;
         this.ownerId = ownerId;
         this.text = text;
@@ -86,6 +112,8 @@ public class Post {
         this.userIdWhoDislikes = userIdWhoDislikes;
         this.comments = comments;
         this.picture = picture;
+        this.numberOfLikes = numberOfLikes;
+        this.numberOfDislikes = numberOfDislikes;
     }
 
     public Post(Long id, Long ownerId, String text, List<Long> userIdWhoLikes, List<Long> userIdWhoDislikes, List<Comment> comments) {
