@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AllJobsComponent } from './all-jobs/all-jobs.component';
 import { AllProfilesComponent } from './all-profiles/all-profiles.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { CommentComponent } from './comment/comment.component';
 import { FindProfileForUpdatedComponent } from './find-profile-for-updated/find-profile-for-updated.component';
+import { JobSearchComponent } from './job-search/job-search.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { OnePostComponent } from './one-post/one-post.component';
 import { PostComponent } from './post/post.component';
@@ -32,7 +34,9 @@ const routes: Routes = [
   {path: 'profiles', component: ProfileComponent},
   {path: 'all_profiles', component: AllProfilesComponent},
   {path: 'find/:username',component: ProfileSearchComponent},
-  {path: 'find_profile_update', component: FindProfileForUpdatedComponent}
+  {path: 'find_profile_update', component: FindProfileForUpdatedComponent},
+  {path: 'all_jobs', component: AllJobsComponent},
+  {path: 'position/:position', component: JobSearchComponent}
 
 
 ];
