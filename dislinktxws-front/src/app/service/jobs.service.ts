@@ -32,5 +32,10 @@ export class JobsService {
 
   }
 
+  createNewOffer(newOffer: JobOffer):Observable<JobOffer>
+  {
+    return this.http.post<JobOffer>(this.url1,newOffer);
+  }
+
   
 }
