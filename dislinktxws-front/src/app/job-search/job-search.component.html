@@ -1,0 +1,34 @@
+<div class = "Profile">
+    <form >
+        <label for="id">Job ID:</label>
+        <div class="form-group text-center">
+          <p>{{jobOffer.id}}</p>
+        </div>
+
+        <label for="position">Position: </label>
+        <div class="form-group text-center">
+          <p>{{jobOffer.position}}</p>
+        </div>
+       
+
+        <label for="description">Description: </label>
+        <div class="form-group text-center">
+           <p>{{jobOffer.description}}
+        </div>
+
+        <label for="daily_activities">Daily Activities:</label>
+        <div class="form-group text-center">
+            <p>{{jobOffer.daily_activities}}
+        </div>
+
+     
+         <label for="qualifications">Qualifications:</label>
+         <div class="form-group text-center">
+            <p>{{jobOffer.qualifications}}</p>
+        </div>
+
+    </form>
+    <button class="btn btn-success" (click)="  Back()">Back</button>
+
+</div>
+
