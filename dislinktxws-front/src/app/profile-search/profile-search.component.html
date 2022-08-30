@@ -32,19 +32,24 @@
           </div>
         
         <label for="experience">Experience </label>
-        
-          <!--<li ng-repeat="education">{{profile.education}}</li> -->
-          
+           <div >
+       <input  [(ngModel)]="listsOfExperiance"  id="experience" name="experience"  type="text" >
+    </div>
+    
+       <label for="education">Education </label>
+       <div >
+        <input  [(ngModel)]="listsOfEducation"  id="education" name="education"  type="text" >
+     </div>
 
-          <div ng-app="">
+     <label for = "skills"> Skills</label>
+     <div>
+      <input [(ngModel)] = "listsOfSkills" id = "skills" name = "skills" type="text">
+     </div>
 
-            
-            <input [(ngModel)]="profile.experience" id="experience" name="experience"  ng-list/>
-            
-            
-            <pre>{{profile.experience}}</pre>
-            
-            </div>
+     <label for = "interests">Interests </label>
+     <div>
+      <input [(ngModel)] = "listsOfInterests" id = "interests" name = "interests" type="text">
+     </div>
         
           
        
@@ -53,27 +58,8 @@
            
 
 
-        <label for="education">Education </label>
-        <ul>
-           <!--<li ng-repeat="education">{{profile.education}}</li> -->
-           <div class="form-group text-center">
-             <input [(ngModel)]="profile.education" id="education" name="education" type="texts" class="from-control">
-           </div>
-            </ul>
-        <label for="interests">Interests</label>
-        <ul>
-            <!--<li ng-repeat="interests">{{profile.interests}}</li>-->
-            <div class="form-group text-center">
-                <input [(ngModel)]="profile.interests" id="interests" name="interests" type="text" class="from-control">
-              </div>
-        </ul>
-        <label for="skills">Skills </label>
-        <ul>
-            <!--<li ng-repeat="skills">{{profile.skills}}</li> -->
-            <div class="form-group text-center">
-                <input [(ngModel)]="profile.skills" id="skills" name="skills" type="text" class="from-control">
-              </div>
-        </ul>
+       
+        
         <label for="isPrivate">Profil is:</label>
         <!--<p>{{profile.isPrivate}}</p> -->
         <div class="form-group text-center">

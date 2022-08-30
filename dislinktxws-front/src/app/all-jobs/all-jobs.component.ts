@@ -14,6 +14,7 @@ export class AllJobsComponent implements OnInit {
   jobOffer: JobOffer;
   id: number;
   position: string;
+  listOfQualifications: string = '';
 
   constructor(private jobsService: JobsService, private router: Router) { }
 
@@ -25,12 +26,21 @@ export class AllJobsComponent implements OnInit {
   LoadData()
   {
     this.jobsService.getJobOffers()
-    .subscribe(res => this.jobOffers = res);
+    .subscribe(res => this.jobOffers = res)
   }
+
 
   JobOfferProfile()
   {
     location.pathname = ('position/' + this.position);
   }
+
+  CreateJobOffer()
+  {
+    location.pathname = ('job/create/');
+  }
+
+  
+
 
 }
