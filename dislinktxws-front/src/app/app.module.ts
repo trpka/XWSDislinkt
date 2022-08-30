@@ -24,6 +24,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AllProfilesComponent } from './all-profiles/all-profiles.component';
 import { ProfileSearchComponent } from './profile-search/profile-search.component';
 import { FindProfileForUpdatedComponent } from './find-profile-for-updated/find-profile-for-updated.component';
+import { AllJobsComponent } from './all-jobs/all-jobs.component';
+import { JobSearchComponent } from './job-search/job-search.component';
+import { CreateJobOfferComponent } from './create-job-offer/create-job-offer.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,11 @@ import { FindProfileForUpdatedComponent } from './find-profile-for-updated/find-
     AllProfilesComponent,
     ProfileSearchComponent,
     FindProfileForUpdatedComponent,
+    AllJobsComponent,
+    JobSearchComponent,
+    CreateJobOfferComponent
+
+   
 
 
   ],
