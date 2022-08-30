@@ -29,4 +29,9 @@ export class OnePostComponent implements OnInit {
   {
     this.router.navigate(['/profile', this.post.ownerId]);
   }
+
+  backToPosts()
+{
+  this.router.navigate(['/posts/profileIFollowed']);
+}
 }

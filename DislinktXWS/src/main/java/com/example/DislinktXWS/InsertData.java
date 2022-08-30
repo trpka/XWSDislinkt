@@ -82,7 +82,7 @@ public class InsertData {
         newProfile.setFollowers(li1);
 
         List<Long> lis2 = new ArrayList<>();
-        //lis2.add((long)1);
+        lis2.add((long)1);
         lis2.add((long)3);
 
         Profile newProfile2 = new Profile();

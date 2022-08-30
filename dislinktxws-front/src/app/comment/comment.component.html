@@ -5,6 +5,7 @@
         <label for="content">Content:</label><br/>
         <input id="content" name="content" [(ngModel)]="newCommentForPost.comment.content"><br/>
   
+        <button class="btn btn-success" (click)="backToPosts()">Back to posts</button>
         <button class="btn btn-success" (click)="backToProfile()">Back to profile</button>
         <button class="btn btn-success" (click)="saveComment()">save</button>
     </form>

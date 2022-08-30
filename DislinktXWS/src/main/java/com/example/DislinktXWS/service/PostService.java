@@ -5,9 +5,13 @@ import com.example.DislinktXWS.DTO.NewLikeDTO;
 
 
 import com.example.DislinktXWS.model.Post;
+import com.example.DislinktXWS.model.Profile;
 import com.example.DislinktXWS.repository.PostRepository;
+import com.example.DislinktXWS.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -20,6 +24,8 @@ import java.util.Optional;
 public class PostService {
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private ProfileRepository profileRepository;
 
 
     public Post save(Post post){
@@ -146,6 +152,40 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    public List<Post> findAllPostsFromProfilesYouFollow(Long idProfile){
+        //Profile profile = this.profileRepository.findProfileById(idProfile);
+        List<Profile> profiles = this.profileRepository.findAll();
+        List<Post> posts = this.postRepository.findAll();
+        List<Post> findedPosts = new ArrayList<>();
+        //Post p3;
+        //this.postRepository.findById()
+
+        List<Long> profilesIFollow = new ArrayList<>();
+        for(Profile p: profiles)
+        {
+           for(Long f:p.getFollowers())
+           {
+               if(f.equals(idProfile))
+               {
+                   profilesIFollow.add(p.getId());
+               }
+           }
+        }
+
+        for(Long profileIFollow: profilesIFollow)
+        {
+            for(Post p2 : posts)
+            {
+                if(profileIFollow.equals(p2.getOwnerId()))
+                {
+                    findedPosts.add(p2);
+                }
+            }
+        }
+
+
+        return findedPosts;
+    }
 
 }
 

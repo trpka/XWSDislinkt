@@ -198,8 +198,8 @@ export class UserProfileComponent implements OnInit {
     })
   }
   
-  blockUser(){
-
+  blockProfile(id:number){
+    
   }
 
   acceptRequest(f:FollowRequest)

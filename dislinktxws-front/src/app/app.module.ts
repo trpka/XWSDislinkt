@@ -27,6 +27,7 @@ import { FindProfileForUpdatedComponent } from './find-profile-for-updated/find-
 import { AllJobsComponent } from './all-jobs/all-jobs.component';
 import { JobSearchComponent } from './job-search/job-search.component';
 import { CreateJobOfferComponent } from './create-job-offer/create-job-offer.component';
+import { ProfilesIFollowPostsComponent } from './profiles-ifollow-posts/profiles-ifollow-posts.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CreateJobOfferComponent } from './create-job-offer/create-job-offer.com
     FindProfileForUpdatedComponent,
     AllJobsComponent,
     JobSearchComponent,
-    CreateJobOfferComponent
+    CreateJobOfferComponent,
+    ProfilesIFollowPostsComponent
 
    
 
