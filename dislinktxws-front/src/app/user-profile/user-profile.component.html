@@ -54,7 +54,7 @@
         <tbody>
             <tr *ngFor="let l of listOfFollowers1">
                 <td>{{l.username}}</td>
-                <td><button class="btn btn-success" (click)="blockUser()">Block</button></td>
+                <td><button class="btn btn-success" (click)="blockProfile(l.id)">Block</button></td>
             </tr>
         </tbody>
     </table>

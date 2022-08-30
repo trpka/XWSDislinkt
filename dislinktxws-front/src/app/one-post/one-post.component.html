@@ -9,6 +9,7 @@
         <label for="dislike">Disikes:</label><br/>
         <label for="coments">Comments:</label><br/>
 
+        <button class="btn btn-success" (click)="backToPosts()">Back to posts</button>
         <button class="btn btn-success" (click)="backToProfile()">Back to profile</button>
         <button class="btn btn-success" [routerLink]="['/newComment',post.id]">Add comment</button>
     </form>

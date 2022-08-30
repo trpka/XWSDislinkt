@@ -40,4 +40,11 @@ export class PostService {
     return this.http.post<number[]>(this.url+"/checkPost",post);
   } 
 
+  findAllPostsFromProfilesYouFollow(idProfile:number):Observable<Post[]>
+   {
+    const params:HttpParams=new HttpParams().append('idProfile',idProfile);
+    return this.http.get<Post[]>(this.url+"/profilesYouFollow",{params});
+      
+   }
+
 }

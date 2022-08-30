@@ -83,6 +83,11 @@ export class CommentComponent implements OnInit {
     this.router.navigate(['/profile', this.post.ownerId]);
   }
 
+  backToPosts()
+  {
+    this.router.navigate(['/posts/profileIFollowed']);
+  }
+
  
   /*
   saveComment(){ 

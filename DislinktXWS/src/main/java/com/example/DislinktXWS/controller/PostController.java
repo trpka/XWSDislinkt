@@ -87,4 +87,14 @@ public class PostController {
         return new ResponseEntity<>(dislikedPost, HttpStatus.CREATED);
     }
 
+
+    @RequestMapping(value="api/post/profilesYouFollow",method = RequestMethod.GET, params = "idProfile",
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<Post>> findAllPostsFromProfilesYouFollow(@RequestParam Long idProfile){
+        List<Post> posts=this.postService.findAllPostsFromProfilesYouFollow(idProfile);
+        return new ResponseEntity<>(posts,HttpStatus.OK);
+    }
+
+
+
 }

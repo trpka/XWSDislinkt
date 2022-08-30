@@ -12,6 +12,7 @@ import { OnePostComponent } from './one-post/one-post.component';
 import { PostComponent } from './post/post.component';
 import { ProfileSearchComponent } from './profile-search/profile-search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProfilesIFollowPostsComponent } from './profiles-ifollow-posts/profiles-ifollow-posts.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SearchComponent } from './search/search.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path: 'find_profile_update', component: FindProfileForUpdatedComponent},
   {path: 'all_jobs', component: AllJobsComponent},
   {path: 'position/:position', component: JobSearchComponent},
-  {path: 'job/create', component:CreateJobOfferComponent}
+  {path: 'job/create', component:CreateJobOfferComponent},
+  {path: 'posts/profileIFollowed', component:ProfilesIFollowPostsComponent}
 
 
 ];
