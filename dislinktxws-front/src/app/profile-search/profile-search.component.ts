@@ -22,7 +22,7 @@ export class ProfileSearchComponent implements OnInit
 
   idFollower:any;
   idUser: number;
-  listsOfExperiance:string='';
+  
   listsOfEducation:string='';
   listsOfSkills:string='';
   listsOfInterests:string='';
@@ -124,12 +124,6 @@ export class ProfileSearchComponent implements OnInit
     this.listsOfInterests=listsInterests.join(",");
   }
   
-  insertExperianceIntoString(experiance:string[]){
-    var listsExperiance:string[]=[];
-    experiance.forEach(function(lan:string){
-      listsExperiance.push(lan)
-    })
-    this.listsOfExperiance=listsExperiance.join(",")
-  }
+  
 
 }
