@@ -5,12 +5,12 @@
         <label for="content">Content:</label><br/>
         <input id="content" name="content" [(ngModel)]="newCommentForPost.comment.content"><br/>
   
-        
+        <button class="btn btn-success" (click)="backToProfile()">Back to profile</button>
         <button class="btn btn-success" (click)="saveComment()">save</button>
     </form>
 </div>
 
-<div>
+<!--<div class = "comment-input">
     <table class="table table-striped ">
         <thead>
             <tr>
@@ -20,6 +20,23 @@
         <tbody >
 			<tr  *ngFor="let comment of comments"  >  
                 <td>{{comment.userId}}</td><td>{{comment.content}}</td>  
+            </tr>
+		</tbody>
+    </table>
+</div>-->
+
+<div class = "comment-input">
+    <label >See all comments:</label><br/>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>UserId</th><th>Content</th>
+            </tr>
+        </thead>
+        <tbody >
+			<tr  *ngFor="let com of post.comments" >  
+                <td>{{com.userId}}</td>
+                <td>{{com.content}}</td>
             </tr>
 		</tbody>
     </table>

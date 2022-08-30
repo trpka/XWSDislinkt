@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Comment } from '../model/comment.model';
 import { NewComment } from '../model/newComment';
 import { Post } from '../model/post.model';
@@ -24,7 +24,7 @@ export class CommentComponent implements OnInit {
   @Output()
   CommentAdded : EventEmitter<Comment> =new EventEmitter();
   
-  constructor(private commentService:CommentService, private route: ActivatedRoute, private postService:PostService) { 
+  constructor(private commentService:CommentService, private route: ActivatedRoute, private postService:PostService, private router: Router) { 
     /*this.commentToAdd=new Comment(
     {
       id:"",
@@ -76,6 +76,11 @@ export class CommentComponent implements OnInit {
     this.newCommentForPost.comment.userId = Number(sessionStorage.getItem('id'))
     this.commentService.save(this.newCommentForPost)
     .subscribe(_=>this.reloadData)
+  }
+
+  backToProfile()
+  {
+    this.router.navigate(['/profile', this.post.ownerId]);
   }
 
  

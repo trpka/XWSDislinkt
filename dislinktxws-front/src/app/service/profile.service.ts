@@ -41,6 +41,7 @@ export class ProfileService {
 
 
   followProfile(newFollower:NewFollower):Observable<Profile>{
+    
     return this.http.post<Profile>(this.url+"/follower",newFollower);
   }
 

@@ -17,6 +17,7 @@ export class ProfileSearchComponent implements OnInit
   posts:Post[];
   username:string;
   password: string;
+  listsOfExperiance:string='';
   
 
   idFollower:any;
@@ -41,7 +42,7 @@ export class ProfileSearchComponent implements OnInit
      this.password = this.route.snapshot.params['password'];
     
     this.profileService.searchProfileByUsername(this.username)
-    .subscribe(res => this.profile=res)
+    .subscribe(res =>{this.profile=res;this.insertExperianceIntoString(res.experience)})
    
 
     this.findPosts()
@@ -63,9 +64,18 @@ export class ProfileSearchComponent implements OnInit
 
   UpdateProfile()
   {
+    this.profile.experience=this.listsOfExperiance.split(",");
     this.profileService.UpdateProfile(this.profile)
     .subscribe(res => this.profile=res)
     window.location.reload()
+  }
+  
+  insertExperianceIntoString(experiance:string[]){
+    var listsExperiance:string[]=[];
+    experiance.forEach(function(lan:string){
+      listsExperiance.push(lan)
+    })
+    this.listsOfExperiance=listsExperiance.join(",")
   }
 
 }

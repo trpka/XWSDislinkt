@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../model/post.model';
 import { PostService } from '../service/post.service';
 
@@ -11,7 +11,7 @@ import { PostService } from '../service/post.service';
 export class OnePostComponent implements OnInit {
   id:number;
   post:Post;
-  constructor(private route: ActivatedRoute, private postService:PostService) { 
+  constructor(private route: ActivatedRoute, private postService:PostService,  private router: Router) { 
     
   }
 
@@ -25,4 +25,8 @@ export class OnePostComponent implements OnInit {
     .subscribe(res=>this.post=res)
   }
 
+  backToProfile()
+  {
+    this.router.navigate(['/profile', this.post.ownerId]);
+  }
 }
