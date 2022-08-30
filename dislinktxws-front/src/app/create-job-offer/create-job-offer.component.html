@@ -19,25 +19,20 @@
         <label for="description">Description:</label><br/>
         <input id="description" name="description" type="text" [(ngModel)]="newOffer.description"><br/>
 
-       <label for="newOffer.daily_activities">Daily Activities:</label><br/>
+       <!--<label for="newOffer.daily_activities">Daily Activities:</label><br/>
        
-        <input id="daily_activities"  type="text"  [(ngModel)]="newOffer.daily_activities" ><br/>
+        <input id="daily_activities"  type="text"  [(ngModel)]="newOffer.daily_activities" ><br/>-->
         
-      <!--<label for="newOffer.qualifications">Qualifications:</label><br/>
-        <input id="qualifications" name="qualifications" parse="," type="text" [(ngModel)]="newOffer.qualifications"><br/> -->
+        <label for="qualifications">Qualifications </label>
+       <div >
+        <input  [(ngModel)]="listOfQualifications"  id="qualifications" name="qualifications"  type="text" >
+     </div>
 
+     <label for="daily_activities">Daily Activities </label>
+       <div >
+        <input  [(ngModel)]="listOfactivities"  id="daily_activities" name="daily_activities"  type="text" >
+     </div>
       
-        <!--<div ng-app="">
-
-            
-            <input ng-model="newOffer.qualifications" ng-list/>
-            <pre>{{newOffer.qualifications}}</pre>
-            
-            </div>-->
-    
-       
-
-            
 
         
         

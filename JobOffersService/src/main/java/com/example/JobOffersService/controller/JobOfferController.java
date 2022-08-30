@@ -51,6 +51,15 @@ public class JobOfferController
         return new ResponseEntity<>(job_offer,HttpStatus.OK);
     }
 
+    //Brisanje Ponude po ID-ju
+    @DeleteMapping("/api/job/delete/{id}")
+    public String delete(@PathVariable(name = "id") Long id)
+    {
+        JobOffer jobOffer = this.jobOfferService.getJobOfferById(id);
+        this.jobOfferService.delete(jobOffer);
+        return "Succesfully deleted user!";
+    }
+
 
 
 }

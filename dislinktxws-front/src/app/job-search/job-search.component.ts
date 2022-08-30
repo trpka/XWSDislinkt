@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CreateJobOfferComponent } from '../create-job-offer/create-job-offer.component';
 import { JobOffer } from '../model/JobOffer';
 import { JobsService } from '../service/jobs.service';
 
@@ -14,7 +15,11 @@ export class JobSearchComponent implements OnInit {
   position: string;
   jobOffer: JobOffer;
 
-  constructor(private route: ActivatedRoute, private router: Router, private jobsService: JobsService) { }
+  listOfQualifications:string = '';
+
+
+  constructor(private route: ActivatedRoute, private router: Router, 
+    private jobsService: JobsService) { }
 
   ngOnInit(): void 
   {
@@ -26,13 +31,26 @@ export class JobSearchComponent implements OnInit {
   {
     this.position = this.route.snapshot.params['position'];
     this.jobsService.getJobByPosition(this.position)
-    .subscribe(res => this.jobOffer = res)
+    .subscribe(res => {this.jobOffer = res;
+    this.insertQualificationsIntoString(res.qualifications)})
   }
   
   Back()
   {
     this.router.navigate(['all_jobs']);
 
+  }
+
+
+  insertQualificationsIntoString(qualifications: string[])
+  {
+    var listQualifications:string[]=[];
+    qualifications.forEach(function(lan:string)
+    {
+      listQualifications.push(lan);
+    })
+
+    this.listOfQualifications = listQualifications.join(",");
   }
 
 }

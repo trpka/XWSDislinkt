@@ -18,6 +18,10 @@ public class JobOfferService
   {
       List<JobOffer> list_of_all = jobOfferRepository.findAll();
 
+      if(jobOffer.getDescription().isEmpty() || jobOffer.getPosition().isEmpty())
+      {
+          return  null;
+      }
       Long id = (long)0;
       for(JobOffer jo: list_of_all)
       {
@@ -25,7 +29,8 @@ public class JobOfferService
       }
       id = id + 1;
       jobOffer.setId(id);
-      this.jobOfferRepository.save(jobOffer);
+
+
 
       return this.jobOfferRepository.save(jobOffer);
   }
@@ -49,6 +54,11 @@ public class JobOfferService
   public JobOffer getJobByPosition(String position)
   {
       return this.jobOfferRepository.getJobByPosition(position);
+  }
+
+  public void delete(JobOffer jobOffer)
+  {
+    this.jobOfferRepository.delete(jobOffer);
   }
 
 
