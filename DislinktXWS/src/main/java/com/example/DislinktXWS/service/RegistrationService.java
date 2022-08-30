@@ -1,13 +1,16 @@
 package com.example.DislinktXWS.service;
 
 import com.example.DislinktXWS.model.Post;
+import com.example.DislinktXWS.model.Profile;
 import com.example.DislinktXWS.model.User;
+import com.example.DislinktXWS.repository.ProfileRepository;
 import com.example.DislinktXWS.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +18,10 @@ public class RegistrationService
 {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ProfileService profileService;
+    @Autowired
+    private ProfileRepository profileRepository;
 
     public User getByUsername(String username)
     {
@@ -47,7 +54,19 @@ public class RegistrationService
         id = id + 1;
         user.setId(id);
 
-        return   this.userRepository.save(user);
+        List list = new ArrayList();
+        User user2 = this.userRepository.save(user);
+        Profile profile = new Profile();
+        profile.setId(user2.getId());
+        profile.setUser(user2);
+        profile.setFollowers(list);
+        profile.setSkills(list);
+        profile.setInterests(list);
+        profile.setExperience(list);
+        profile.setEducation(list);
+        profile.setPrivateProfile(false);
+        this.profileRepository.save(profile);
+        return  new User();
     }
 
 

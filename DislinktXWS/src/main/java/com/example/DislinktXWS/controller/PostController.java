@@ -87,4 +87,11 @@ public class PostController {
         return new ResponseEntity<>(dislikedPost, HttpStatus.CREATED);
     }
 
+    @RequestMapping(value="api/post/profilesYouFollow",method = RequestMethod.GET,produces = {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+    public ResponseEntity<List<Post>> findAllPostFromProfilesYouFollow(){
+        List<Post> posts=this.postService.findAllPostFromProfilesYouFollow();
+        return new ResponseEntity<>(posts,HttpStatus.OK);
+    }
+
 }

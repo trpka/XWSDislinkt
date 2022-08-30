@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -105,6 +106,15 @@ public class Profile {
         this.followers = followers;
     }
 
+    public Profile(User user) {
+        this.user = user;
+        this.experience = new ArrayList<>();
+        this.education = new ArrayList<>();
+        this.interests = new ArrayList<>();
+        this.skills = new ArrayList<>();
+        this.privateProfile = false;
+        this.followers = new ArrayList<>();
+    }
     public Profile()
     {
 

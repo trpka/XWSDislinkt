@@ -146,6 +146,10 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    public List<Post> findAllPostFromProfilesYouFollow(){
+        return new ArrayList<>();
+    }
+
 
 }
 

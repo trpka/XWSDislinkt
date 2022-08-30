@@ -49,8 +49,8 @@ public class InsertData {
         User user3 = new User((long)3, "Stevan", "Stefanovic", "steva@gmail.com", "steva", "123","14.11.1999.");
         userRepository.save(user3);
 
-        User user33 = new User((long)33, "Rade", "Radic", "steva@gmail.com", "rade", "123","14.11.1999.");
-        userRepository.save(user2);
+        /*User user33 = new User((long)33, "Rade", "Radic", "steva@gmail.com", "rade", "123","14.11.1999.");
+        userRepository.save(user2);*/
 
 
         List<Long> li1 = new ArrayList<>();
@@ -115,7 +115,7 @@ public class InsertData {
 
 
 
-        Profile newProfile33 = new Profile();
+        /*Profile newProfile33 = new Profile();
         newProfile33.setId((long)33);
         newProfile33.setUser(user33);
         newProfile33.setEducation(list);
@@ -125,7 +125,7 @@ public class InsertData {
         newProfile33.setPrivateProfile(false);
         newProfile33.setUser(user33);
         newProfile33.setFollowers(li1);
-        profileRepository.save(newProfile33);
+        profileRepository.save(newProfile33);*/
 
         profileRepository.save(newProfile3);
         profileRepository.save(newProfile2);
