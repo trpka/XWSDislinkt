@@ -4,6 +4,7 @@ import { AllJobsComponent } from './all-jobs/all-jobs.component';
 import { AllProfilesComponent } from './all-profiles/all-profiles.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { CommentComponent } from './comment/comment.component';
+import { CreateJobOfferComponent } from './create-job-offer/create-job-offer.component';
 import { FindProfileForUpdatedComponent } from './find-profile-for-updated/find-profile-for-updated.component';
 import { JobSearchComponent } from './job-search/job-search.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'find/:username',component: ProfileSearchComponent},
   {path: 'find_profile_update', component: FindProfileForUpdatedComponent},
   {path: 'all_jobs', component: AllJobsComponent},
-  {path: 'position/:position', component: JobSearchComponent}
+  {path: 'position/:position', component: JobSearchComponent},
+  {path: 'job/create', component:CreateJobOfferComponent}
 
 
 ];
