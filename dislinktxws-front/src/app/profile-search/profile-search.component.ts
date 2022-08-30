@@ -17,6 +17,7 @@ export class ProfileSearchComponent implements OnInit
   posts:Post[];
   username:string;
   password: string;
+  listsOfExperiance:string='';
   
 
   idFollower:any;
@@ -70,9 +71,11 @@ export class ProfileSearchComponent implements OnInit
   UpdateProfile()
   {
     this.profile.experience=this.listsOfExperiance.split(",");
+
     this.profile.education = this.listsOfEducation.split(",");
     this.profile.skills = this.listsOfSkills.split(",");
     this.profile.interests = this.listsOfInterests.split(",");
+
     this.profileService.UpdateProfile(this.profile)
     .subscribe(res => this.profile=res)
     window.location.reload()
@@ -119,6 +122,14 @@ export class ProfileSearchComponent implements OnInit
     })
 
     this.listsOfInterests=listsInterests.join(",");
+  }
+  
+  insertExperianceIntoString(experiance:string[]){
+    var listsExperiance:string[]=[];
+    experiance.forEach(function(lan:string){
+      listsExperiance.push(lan)
+    })
+    this.listsOfExperiance=listsExperiance.join(",")
   }
 
 }

@@ -119,22 +119,30 @@ public class ProfileService {
 
     public Profile followProfile(NewFollowerDTO newFollowerDTO) {
         Profile followedProfile = findById(newFollowerDTO.getIdProfileUser());
+        List<User> users1 = findAllFollowers(newFollowerDTO.getIdProfileUser());
+        Boolean check = false;
+        for(User u  :users1) {
+            if (u.getId().equals(newFollowerDTO.getIdFollowerUser())) {
+                check = true;
 
-        if(followedProfile.isPrivateProfile() == false) {
-            if (followedProfile.getFollowers() == null) {
-                List<Long> initList = new ArrayList<>();
-                initList.add(newFollowerDTO.getIdFollowerUser());
-                followedProfile.setFollowers(initList);
-            }
-            else {
-                followedProfile.getFollowers().add(newFollowerDTO.getIdFollowerUser());
             }
         }
-        else
-        {
-            System.out.print("profile is private");
-        }
-        return profileRepository.save(followedProfile);
+
+                if (followedProfile.isPrivateProfile() == false && check == false) {
+                    if (followedProfile.getFollowers() == null) {
+                        List<Long> initList = new ArrayList<>();
+                        initList.add(newFollowerDTO.getIdFollowerUser());
+                        followedProfile.setFollowers(initList);
+                        return profileRepository.save(followedProfile);
+                    } else {
+                        followedProfile.getFollowers().add(newFollowerDTO.getIdFollowerUser());
+                        return  profileRepository.save(followedProfile);
+                    }
+                } else {
+                    System.out.print("profile is private");
+                }
+
+        return new Profile();//profileRepository.save(followedProfile);
     }
 
     public Profile findByUsername1( String username){

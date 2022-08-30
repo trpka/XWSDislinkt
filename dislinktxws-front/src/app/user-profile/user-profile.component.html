@@ -36,8 +36,8 @@
        
 
        
-
-        <button class="btn btn-success" (click)="followProfile()" *ngIf="showFollowButton() && showFollowButtonForLoginUser">Follow</button>
+        <!-- && showFollowButtonForLoginUser-->
+        <button class="btn btn-success" (click)="followProfile()" *ngIf="showFollowButton()">Follow</button>
         <button class="btn btn-success" *ngIf="showSendRequestButtonForLoginUser">Follow request sent</button>
         <button class="btn btn-success" (click)="seeAllFollowers()">See all followers</button>
 
@@ -96,11 +96,11 @@
                 <td>{{post.ownerId}}</td>
                 <td>{{post.text}}</td>
                 <td><img src = "{{post.picture}}" style="height: 50px; border-radius: 50px;"></td>
-                <button (click)="likePost(post)">
+                <button (click)="likePost1(post)">
                     <mat-icon>thumb_up</mat-icon>Like
                   </button>
                 <td>{{post.numberOfLikes}}</td>
-                <button (click)="dislikePost(post)">
+                <button (click)="dislikePost1(post)">
                     <mat-icon>thumb_down</mat-icon>Dislike
                 </button>
                 <td>{{post.numberOfDislikes}}</td>

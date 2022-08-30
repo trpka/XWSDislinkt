@@ -8,9 +8,8 @@
         <br>
         <label>Picture:</label>
           <input id="image" type="file" (change)="onFileChanged($event)">
+          <button class="btn btn-success" (click)="backToProfile()">Back to profile</button>
           <button id="upload_button" class="btn btn-success" (click)="onUpload()">Upload</button>
-        
-        <button class="btn btn-success" (click)="backToProfile()">Back to profile</button>
         <button class="btn btn-success" (click)="savePost()">save</button>
     </form>
 </div>

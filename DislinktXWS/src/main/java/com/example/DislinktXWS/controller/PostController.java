@@ -1,6 +1,7 @@
 package com.example.DislinktXWS.controller;
 
-import com.example.DislinktXWS.model.Comment;
+import com.example.DislinktXWS.DTO.NewDislikeDTO;
+import com.example.DislinktXWS.DTO.NewLikeDTO;
 import com.example.DislinktXWS.model.Post;
 import com.example.DislinktXWS.repository.PostRepository;
 import com.example.DislinktXWS.service.PostService;
@@ -53,7 +54,7 @@ public class PostController {
         return new ResponseEntity<>(post,HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/post/likePost",method = RequestMethod.POST,
+    /*@RequestMapping(value="api/post/likePost",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Post> likePost(@RequestBody Post post){
         Long numberLikes = post.getNumberOfLikes();
@@ -61,17 +62,29 @@ public class PostController {
         post.setNumberOfLikes(numberLikes);
         Post likedPost=this.postRepository.save(post);
         return new ResponseEntity<>(likedPost, HttpStatus.CREATED);
+    }*/
+
+
+    @RequestMapping(value="api/post/checkPost",method = RequestMethod.GET,produces= {
+            MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<List> checkIfPostIsDisliked(@RequestBody Post post1){
+        List<Long> dislikes = post1.getUserIdWhoDislikes();
+        return new ResponseEntity<>(dislikes,HttpStatus.OK);
     }
 
-    @RequestMapping(value="api/post/dislikePost",method = RequestMethod.POST,
+    @RequestMapping(value="api/post/likePost1",method = RequestMethod.POST,
             consumes= MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Post> dislikePost(@RequestBody Post post){
-        Long numberDislikes = post.getNumberOfDislikes();
-        numberDislikes++;
-        post.setNumberOfDislikes(numberDislikes);
-        Post dislikedPost=this.postRepository.save(post);
+    public ResponseEntity<Post> likePost1(@RequestBody NewLikeDTO newLikeDTO){
+        Post likedPost=this.postService.likePost1(newLikeDTO);
+        return new ResponseEntity<>(likedPost, HttpStatus.CREATED);
+    }
+
+
+    @RequestMapping(value="api/post/dislikePost1",method = RequestMethod.POST,
+            consumes= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Post> dislikePost1(@RequestBody NewDislikeDTO newDislikeDTO){
+        Post dislikedPost=this.postService.dislikePost1(newDislikeDTO);
         return new ResponseEntity<>(dislikedPost, HttpStatus.CREATED);
     }
-
 
 }

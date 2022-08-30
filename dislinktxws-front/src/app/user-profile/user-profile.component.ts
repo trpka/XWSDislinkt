@@ -9,6 +9,10 @@ import { User } from '../model/user';
 import { FollowRequestService } from '../service/follow-request.service';
 import { FollowRequest } from '../model/followRequest';
 import { PostService } from '../service/post.service';
+import { NewLike } from '../model/newLike';
+import { NewDislikeDTO } from '../model/newDislikeDTO';
+
+
 
 @Component({
   selector: 'app-user-profile',
@@ -34,12 +38,16 @@ export class UserProfileComponent implements OnInit {
   listOfFollowers2:User[];
   showFollowers = false;
   p = false;
-  showFollowButtonForLoginUser : boolean;
-  showSendRequestButtonForLoginUser = false;
+  showFollowButtonForLoginUser : boolean;//ne treba
+  showSendRequestButtonForLoginUser = false;//ne treba
   profileWhoLikedPost:number;
   profileWhoDislikedPost:number;
   //profileWhichPostWasLiked: number;
   //idPost:number;
+  dislikeList : number[];
+  newLike : NewLike;
+  newDislikeDTO: NewDislikeDTO;
+  
   
  
   constructor(private route: ActivatedRoute, private profileService:ProfileService, 
@@ -47,6 +55,35 @@ export class UserProfileComponent implements OnInit {
     this.newFollower = new NewFollower({
       idProfileUser : 0,
       idFollowerUser : 0
+    }),
+    this.newLike= new NewLike({
+      idProfileWhoLike : 0,
+      likedPost:new Post(
+        {
+          id: 0,
+          ownerId:0,
+          text:"",
+          userIdWhoLikes:[],
+          userIdWhoDislikes:[],
+          comments:[],
+          numberOfLikes:0,
+          numberOfDislikes: 0
+        })
+    }),
+
+    this.newDislikeDTO= new NewDislikeDTO({
+      idProfileWhoDislike : 0,
+      dislikedPost:new Post(
+        {
+          id: 0,
+          ownerId:0,
+          text:"",
+          userIdWhoLikes:[],
+          userIdWhoDislikes:[],
+          comments:[],
+          numberOfLikes:0,
+          numberOfDislikes: 0
+        })
     }),
     
     this.profile = new Profile({
@@ -103,9 +140,9 @@ export class UserProfileComponent implements OnInit {
       { 
         this.numberOfFollowers++;
       };
-      if(this.profile.privateProfile == true){
+      /*if(this.profile.privateProfile == true){
         this.showFollowButtonForLoginUser = true;
-      }
+      }*/
       
       
       
@@ -122,12 +159,19 @@ export class UserProfileComponent implements OnInit {
     }
     else
     {
-      this.followRequest.usernameWhoWantToFollow = String(sessionStorage.getItem('username'));
+      /*this.followRequest.usernameWhoWantToFollow = String(sessionStorage.getItem('username'));
       this.idProfile = Number(this.route.snapshot.params['id']);
       this.profileService.findProfileById(this.idProfile)
       .subscribe(res=>{this.followRequest.username=res.user.username;
         this.followRequestService.save(this.followRequest)
         .subscribe(res=>{this.showFollowButtonForLoginUser = false; this.showSendRequestButtonForLoginUser=true})
+      });*/
+      this.followRequest.usernameWhoWantToFollow = String(sessionStorage.getItem('username'));
+      this.idProfile = Number(this.route.snapshot.params['id']);
+      this.profileService.findProfileById(this.idProfile)
+      .subscribe(res=>{this.followRequest.username=res.user.username;
+        this.followRequestService.save(this.followRequest)
+        .subscribe()
       });
     }
     
@@ -188,6 +232,7 @@ export class UserProfileComponent implements OnInit {
    return true;
   }
 
+
   showPostsOnPrivateProfile():boolean
   {
     this.id3 = Number(sessionStorage.getItem('id'))
@@ -204,19 +249,36 @@ export class UserProfileComponent implements OnInit {
     return this.p;
   }
 
-  likePost(post:Post){
+  /*likePost(post:Post){
     this.profileWhoLikedPost = Number(sessionStorage.getItem('id'))
     post.userIdWhoLikes.push(this.profileWhoLikedPost)
     this.postService.likePost(post)
     .subscribe(_=>this.findPosts())
-    
+      
+  }*/
+
+
+  likePost1(post:Post){
+  this.newLike.idProfileWhoLike = Number(sessionStorage.getItem('id'))
+  this.newLike.likedPost = post;
+  console.log(this.newLike)
+  this.postService.likePost1(this.newLike)
+  .subscribe(_=>this.findPosts())
   }
 
-  dislikePost(post:Post){
-    this.profileWhoDislikedPost = Number(sessionStorage.getItem('id'))
-    post.userIdWhoDislikes.push(this.profileWhoDislikedPost)
-    this.postService.dislikePost(post)
+  dislikePost1(post:Post)
+  {
+    this.newDislikeDTO.dislikedPost = post;
+    this.newDislikeDTO.idProfileWhoDislike = Number(sessionStorage.getItem('id'));
+    this.postService.dislikePost1(this.newDislikeDTO)
     .subscribe(_=>this.findPosts())
+
+  }
+
+
+  likeIfPostIsNotLiked(post:Post)
+  {
+    
   }
 
   createPostPage()
