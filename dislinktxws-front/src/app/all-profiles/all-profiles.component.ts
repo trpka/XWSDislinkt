@@ -13,7 +13,9 @@ export class AllProfilesComponent implements OnInit {
   profiles: Profile[];
   profile: Profile;
   id : number;
+  id1: number;
   username: string;
+  username1: string;
 
   constructor(private profileService: ProfileService,private router: Router) 
   {
@@ -36,19 +38,19 @@ export class AllProfilesComponent implements OnInit {
     location.pathname = ('find/' + this.username);
   }
 
-  /*FindProfileByUsername()
-  {
-    console.log(this.username)
-    this.profileService.searchProfileByUsername(this.username)
-    .subscribe(_=>this.userProfile())
-
-  }*/
+ 
   FindProfileByUsername()
   {
     //console.log(this.username)
     this.profileService.searchProfileByUsername(this.username)
     .subscribe(res=>this.router.navigate(['/profile',res.id]))
     
+  }
+
+  FindPublicAndPrivateProfile()
+  {
+    this.profileService.searchPrivateAndPublicProfile(this.username1)
+    .subscribe(res => this.router.navigate(['/profile', res.id]))
   }
 
 }

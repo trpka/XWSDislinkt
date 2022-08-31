@@ -157,6 +157,8 @@ public class ProfileService {
         return null;
     }
 
+   
+
 
     //Pretraga Profila Po Korisnickom imenu i Lozinki
     public Profile findByUserAndPass(String username, String pass) {
