@@ -8,8 +8,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+
   id:number;
   constructor(private router:Router) { }
+
 
   ngOnInit(): void {
   }

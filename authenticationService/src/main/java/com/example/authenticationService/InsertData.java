@@ -17,6 +17,7 @@ public class InsertData {
     private final UserService userService;
     private final RoleService roleService;
 
+
     @Autowired
     public InsertData(RoleService roleService, UserService userService) {
         this.userService = userService;
@@ -28,9 +29,10 @@ public class InsertData {
     public void init() {
         List<Role> role1 = new ArrayList<>();
         List<Role> role2 = new ArrayList<>();
+        List<Role> role3 = new ArrayList<>();
+        List<Role> role4 = new ArrayList<>();
 
         Role r1 = new Role((long) 55, "ROLE_USER");
-
         Role r2 = new Role((long) 56, "ROLE_ADMIN");
         Role r3 = new Role((long) 57, "ROLE_OWNER");
         roleService.save(r1);
@@ -38,14 +40,17 @@ public class InsertData {
         roleService.save(r3);
         role1.add(r1);
         role2.add(r1);
-        role2.add(r1);
-        User u1 = new User((long) 1, "pera", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Pera", "Peric", "perap@gmail.com", "069545266", "/assets/profilePicture/profile1.jpeg", true, role1, "User");
-        User u2 = new User((long) 2, "jova", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Jova", "Jovic", "jovica@gmail.com", "0625487933", "/assets/profilePicture/profile2.jpeg", true, role2, "User");
-        User u3 = new User((long) 3, "steva", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Stevan", "Stefanovic", "steva@gmail.com", "063966733", "/assets/profilePicture/profile2.jpeg", true, role1, "User");
+        role3.add(r1);
+        role4.add(r1);
+        User u1 = new User((long) 1, "pera", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Pera", "Peric", "perap@gmail.com", "20.08.1999",  true, role1, "User");
+        User u2 = new User((long) 2, "jova", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Jova", "Jovic", "jovica@gmail.com", "20.08.1999", true, role2, "User");
+        User u3 = new User((long) 3, "steva", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Stevan", "Stefanovic", "steva@gmail.com", "20.08.1999",  true, role3, "User");
+        User u4 = new User((long) 4, "mile", "$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra", "Mile", "Milic", "mile@gmail.com", "20.08.1999",  true, role4, "User");
 
 
         userService.saveUser(u1);
         userService.saveUser(u2);
         userService.saveUser(u3);
+        userService.saveUser(u4);
     }
 }

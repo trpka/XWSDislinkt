@@ -38,8 +38,6 @@ public class InsertData {
     public void init() {
 
 
-        //Comment com1=new Comment((long)1,1,"blablablabla");
-        //repository.save(com1);
         User user = new User((long)1, "Pera", "Peric", "jova@gmail.com", "pera", "123","29.08.1999.");
         userRepository.save(user);
 
@@ -49,9 +47,6 @@ public class InsertData {
         User user3 = new User((long)3, "Stevan", "Stefanovic", "steva@gmail.com", "steva", "123","14.11.1999.");
         userRepository.save(user3);
 
-        /*User user33 = new User((long)33, "Rade", "Radic", "steva@gmail.com", "rade", "123","14.11.1999.");
-        userRepository.save(user2);*/
-
 
         List<Long> li1 = new ArrayList<>();
         List<Comment> li2 = new ArrayList<>();
@@ -59,12 +54,6 @@ public class InsertData {
         List<Post> posts = new ArrayList<>();
         posts.add(post);
 
-        /*List<String> exp = Arrays.asList("work in team", "work online");
-
-
-        List<String> edu = Arrays.asList("high school", "university");
-        List<String> inter = Arrays.asList("programming", "computers");
-        List<String> skill = Arrays.asList("quick counting");*/
 
         List<String> list = new ArrayList<>();
         list.add("one");
@@ -106,34 +95,15 @@ public class InsertData {
         newProfile3.setUser(user3);
         newProfile3.setFollowers(li1);
 
-        //Profile profile = new Profile(user,, edu, inter, skill, false);
+
         profileRepository.save(newProfile);
-
-
-        //User user33 = userRepository.getByUsername("laza");
-
-
-
-
-        /*Profile newProfile33 = new Profile();
-        newProfile33.setId((long)33);
-        newProfile33.setUser(user33);
-        newProfile33.setEducation(list);
-        newProfile33.setExperience(list);
-        newProfile33.setInterests(list);
-        newProfile33.setSkills(list);
-        newProfile33.setPrivateProfile(false);
-        newProfile33.setUser(user33);
-        newProfile33.setFollowers(li1);
-        profileRepository.save(newProfile33);*/
-
         profileRepository.save(newProfile3);
         profileRepository.save(newProfile2);
 
-        FollowRequest followRequest = new FollowRequest((long)1,"steva","pera",false);
+        /*FollowRequest followRequest = new FollowRequest((long)1,"steva","pera",false);
         followRequestRepository.save(followRequest);
         FollowRequest followRequest1 = new FollowRequest((long)2,"steva","jova",false);
-        followRequestRepository.save(followRequest1);
+        followRequestRepository.save(followRequest1);*/
 
         Post post1 = new  Post((long)3, (long)2, "lep post", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "/assets/picturePost/post1.jpg", (long)0,(long)0 );
         postRepository.save(post1);
