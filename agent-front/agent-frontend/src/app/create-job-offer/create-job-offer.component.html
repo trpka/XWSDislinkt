@@ -1,0 +1,42 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8"/>
+</head>
+
+
+
+<div class = "new-offer">
+    <form >
+        
+
+        <label for="position">Position :</label><br/>
+        <input name="position" id="position" type="text" [(ngModel)]="newOffer.position"><br/>
+       
+        <label for="description">Description:</label><br/>
+        <input id="description" name="description" type="text" [(ngModel)]="newOffer.description"><br/>
+
+     
+        
+        <label for="qualifications">Qualifications </label>
+       <div >
+        <input  [(ngModel)]="listOfQualifications"  id="qualifications" name="qualifications"  type="text" >
+     </div>
+
+     <label for="daily_activities">Daily Activities </label>
+       <div >
+        <input  [(ngModel)]="listOfactivities"  id="daily_activities" name="daily_activities"  type="text" >
+     </div>
+      
+
+        
+        
+        <button class="registerbtn" (click)="CreateJobOffer()"> Create Job Offer</button>
+    </form>
+</div>
+
+

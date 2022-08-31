@@ -123,6 +123,8 @@ public class ProfileController {
 
 
 
+
+
     //Pretraga i po imenu i po profilu
     @RequestMapping(value="api/profile", method = RequestMethod.GET,
             params = "username" + "password",

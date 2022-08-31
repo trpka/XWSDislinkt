@@ -149,13 +149,15 @@ public class ProfileService {
         List<Profile> allProfiles = this.profileRepository.findAll();
 
         for (Profile p:allProfiles) {
-            if(p.getUser().getUsername().equals(username))
+            if(p.getUser().getUsername().equals(username) && !p.isPrivateProfile())
             {
                 return p;
             }
         }
         return null;
     }
+
+   
 
 
     //Pretraga Profila Po Korisnickom imenu i Lozinki

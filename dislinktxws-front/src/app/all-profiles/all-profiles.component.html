@@ -7,9 +7,14 @@
 </head>
 
 
-<label for="username">Find Profile By Username :</label><br/>
+<label for="username">Find Public Profile By Username :</label><br/>
 <input name = "username" id = "username" type = "text" [(ngModel)] = "username"><br>
 <button class="btn btn-success" (click)="FindProfileByUsername()">Search</button>
+<div></div>
+
+<label for="username1">Find Private And Public Profile By Username :</label><br/>
+<input name = "username1" id = "username1" type = "text" [(ngModel)] = "username1"><br>
+<button class="btn btn-success" (click)="FindPublicAndPrivateProfile()">Search</button>
 
 <div>
     <table class="table table-striped ">

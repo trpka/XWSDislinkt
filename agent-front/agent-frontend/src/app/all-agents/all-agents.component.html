@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8"/>
+</head>
+
+
+
+
+<div>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                
+            </tr>
+        </thead>
+        <tbody >
+      <tr  *ngFor="let newAgent of agents"  >  
+                <td>{{newAgent.id}}</td>
+                <td>{{newAgent.firstName}}</td>
+                <td>{{newAgent.lastName}}</td>
+                <td>{{newAgent.username}}</td>
+                <td>{{newAgent.email}}</td>
+                <td>{{newAgent.phone}}</td>
+                
+     </tr>
+      </tbody>
+    </table>
+
+    <button class="btn btn-success" (click)="AddNewAgent()"> Add new Agent</button>
+
+  </div>

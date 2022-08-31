@@ -1,0 +1,38 @@
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8"/>
+</head>
+
+
+<label for="position">Find JobOfferByPosition :</label><br/>
+<input name = "position" id = "position" type = "text" [(ngModel)] = "position"><br>
+
+<button class="btn btn-success" (click)="JobOfferProfile()">Search</button>
+<button class="btn btn-success" (click)="CreateJobOffer()">New Job Offer</button>
+<div>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Position</th>
+                <th>Description</th>
+                <th>Daily Activities</th>
+                <th>Qualifications</th>
+                
+            </tr>
+        </thead>
+        <tbody >
+      <tr  *ngFor="let jobOffer of jobOffers"  >  
+                <td>{{jobOffer.id}}</td>
+                <td>{{jobOffer.position}}</td>
+                <td>{{jobOffer.description}}</td>
+                <td>{{jobOffer.daily_activities}}</td>
+                <td>{{jobOffer.qualifications}}</td>
+                
+     </tr>
+      </tbody>
+    </table>
+  </div>

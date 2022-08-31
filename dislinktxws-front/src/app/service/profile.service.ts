@@ -15,6 +15,7 @@ export class ProfileService {
   ur2="http://localhost:8081/api/profile/posts";
   url3="http://localhost:8081/api/find";
   url4 = "http://localhost:8081/api/edit";
+  url5 = "http://localhost:8081/api/profile/findAll/";
 
   constructor(private http:HttpClient) {}
   
@@ -70,6 +71,12 @@ export class ProfileService {
    UpdateProfile(profile:Profile):Observable<Profile>
    {
     return this.http.put<Profile>(this.url4,profile);
+   }
+
+   //Pretraga i Privatnih i Javnih Profila
+   searchPrivateAndPublicProfile(username:string):Observable<Profile>
+   {
+    return this.http.get<Profile>(`${this.url3}/${username}`)
    }
 
   
