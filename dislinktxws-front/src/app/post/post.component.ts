@@ -17,6 +17,7 @@ export class PostComponent implements OnInit {
   idOfUser:any;
   id:number;
   selectedFile: File;
+  linkk:string;
   constructor(private postService:PostService, private userService: UserService, private router: Router, private http: HttpClient) { 
 
     this.postToAdd=new Post(

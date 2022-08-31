@@ -22,16 +22,13 @@ public class User implements UserDetails {
 
     @Id
     private Long id;
-
     private String korisnicko;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
-    private String mobile;
-    private String profilePicture;
+    private String dateOfBirth;
     private boolean enabled;
-    //private Timestamp lastPasswordResetDate;
     private List<Role> roles;
     private String roleType;
     public User() {}
@@ -56,7 +53,7 @@ public class User implements UserDetails {
 
 
     public User(Long id, String korisnicko, String password, String firstName, String lastName, String email,
-                String mobile, String profilePicture, boolean enabled, List<Role> roles, String roleType) {
+                String dateOfBirth, boolean enabled, List<Role> roles, String roleType) {
         super();
         this.id = id;
         this.korisnicko = korisnicko;
@@ -64,8 +61,7 @@ public class User implements UserDetails {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.mobile = mobile;
-        this.profilePicture = profilePicture;
+        this.dateOfBirth = dateOfBirth;
         this.enabled = enabled;
         this.roles = roles;
         this.roleType = roleType;
@@ -73,29 +69,13 @@ public class User implements UserDetails {
 
 
 
-    public String getMobile() {
-        return mobile;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
-
-
-
-    public String getProfilePicture() {
-        return profilePicture;
-    }
-
-
-
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
-    }
-
-
 
     public String getRoleType() {
         return roleType;
@@ -181,14 +161,6 @@ public class User implements UserDetails {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-
-    /*public Timestamp getLastPasswordResetDate() {
-        return lastPasswordResetDate;
-    }
-    public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
-        this.lastPasswordResetDate = lastPasswordResetDate;
-    }
-     */
 
     @JsonIgnore
     @Override
