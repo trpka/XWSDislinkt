@@ -1,0 +1,38 @@
+<p>registration works!</p>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8"/>
+</head>
+
+
+
+<div class = "new-agent">
+    <form >
+        
+
+        <label for="firstName">First Name :</label><br/>
+        <input name="firstName" id="firstName" type="text" [(ngModel)]="newAgent.firstName"><br/>
+       
+        <label for="lastName">Last Name:</label><br/>
+        <input id="lastName" name="lastName" type="text" [(ngModel)]="newAgent.lastName"><br/>
+
+        <label for="email">Email:</label><br/>
+        <input id="email" name="email" type="text" [(ngModel)]="newAgent.email"><br/>
+
+        <label for="username">Username:</label><br/>
+        <input id="username" name="username" type="text" [(ngModel)]="newAgent.username"><br/>
+
+        <label for="password">Password:</label><br/>
+        <input id="password" name="password" type="text" [(ngModel)]="newAgent.password"><br/>
+
+        <label for="phone">Phone Number :</label><br/>
+        <input id="phone" name="phone" type="text" [(ngModel)]="newAgent.phone"><br/>
+        
+        <button class="registerbtn" (click)="RegistrationAgent()">Registration</button>
+    </form>
+</div>
+
+
+
