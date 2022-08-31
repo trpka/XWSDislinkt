@@ -13,6 +13,8 @@ import { CreateJobOfferComponent } from './create-job-offer/create-job-offer.com
 import { HttpClientModule } from '@angular/common/http';
 import { JobSearchComponent } from './job-search/job-search.component';
 import { FormsModule } from '@angular/forms';
+import { RegistrationAgentComponent } from './registration-agent/registration-agent.component';
+import { AllAgentsComponent } from './all-agents/all-agents.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     AllJobsComponent,
     CreateJobOfferComponent,
-    JobSearchComponent
+    JobSearchComponent,
+    RegistrationAgentComponent,
+    AllAgentsComponent
   ],
   imports: [
     BrowserModule,
